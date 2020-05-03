@@ -18,6 +18,11 @@ export class AppComponent implements OnInit {
       icon: 'map'
     },
     {
+      title: 'Elevation',
+      url: 'elevation',
+      icon: 'trending-up'
+    },
+    {
       title: 'Marker',
       url: 'marker',
       icon: 'pin'

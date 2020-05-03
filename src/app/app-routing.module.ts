@@ -20,6 +20,10 @@ const routes: Routes = [
     loadChildren: () => import('./directions/directions.module').then( m => m.DirectionsPageModule)
   },
   {
+    path: 'elevation',
+    loadChildren: () => import('./elevation/elevation.module').then( m => m.ElevationPageModule)
+  },
+  {
     path: 'html-info-window',
     loadChildren: () => import('./html-info-window/html-info-window.module').then( m => m.HtmlInfoWindowPageModule)
   },
@@ -62,6 +66,10 @@ const routes: Routes = [
   {
     path: 'street-view',
     loadChildren: () => import('./street-view/street-view.module').then( m => m.StreetViewPageModule)
+  },
+  {
+    path: 'elevation',
+    loadChildren: () => import('./elevation/elevation.module').then( m => m.ElevationPageModule)
   }
 ];
 
