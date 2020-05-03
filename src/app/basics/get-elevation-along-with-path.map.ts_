@@ -1,0 +1,125 @@
+import {   Component,
+  ComponentRef,
+  Injector,
+  ApplicationRef,
+  ComponentFactoryResolver,
+  NgZone,
+  ElementRef,
+  ViewChild } from '@angular/core';
+import { MySubPage } from '../mysubpage.class';
+
+
+
+@Component({
+  // selector: 'get-elevation',
+  template: `
+    <div id="map_canvas"></div>
+    <canvas #charCanvas></canvas>
+  `,
+})
+export class GetElevationAlongPathMap extends MySubPage {
+
+  title: string = "Get elevation along with path";
+  description: string = "This example creates a map that's on Google Headquarter, USA";
+  isInitialized: boolean = false;
+  htmlContainer: ElementRef;
+  @ViewChild('lineCanvas', {static: false}) lineCanvas: ElementRef;
+
+
+  constructor(
+  ) {
+    super();
+  }
+  public onInit(htmlContainer: ElementRef): void {
+    console.log('onInit');
+    this.htmlContainer = htmlContainer;
+
+    // Create a component
+    const compFactory = this.resolver.resolveComponentFactory(ElevationCharCanvas);
+    let compRef: ComponentRef<ElevationCharCanvas> = compFactory.create(this.injector);
+    //compRef.instance.myTitle = marker.get("myTitle");
+    this.appRef.attachView(compRef.hostView);
+
+    let div = document.createElement('div');
+    div.appendChild(compRef.location.nativeElement);
+
+    this.htmlContainer.nativeElement.innerHTML = ``;
+  }
+
+  public onRelease() {
+    console.log('onRelease');
+  }
+  public onMapReady(map: GoogleMap): void {
+    if (this.isInitialized) return;
+    this.isInitialized = true;
+    console.log(this.lineCanvas);
+    // this.lineChart = new Chart(this.lineCanvas.nativeElement, {
+    //
+    //     type: 'line',
+    //     data: {
+    //         labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+    //         datasets: [
+    //             {
+    //                 label: 'My First dataset',
+    //                 fill: false,
+    //                 lineTension: 0.1,
+    //                 backgroundColor: 'rgba(75,192,192,0.4)',
+    //                 borderColor: 'rgba(75,192,192,1)',
+    //                 borderCapStyle: 'butt',
+    //                 borderDash: [],
+    //                 borderDashOffset: 0.0,
+    //                 borderJoinStyle: 'miter',
+    //                 pointBorderColor: 'rgba(75,192,192,1)',
+    //                 pointBackgroundColor: '#fff',
+    //                 pointBorderWidth: 1,
+    //                 pointHoverRadius: 5,
+    //                 pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+    //                 pointHoverBorderColor: 'rgba(220,220,220,1)',
+    //                 pointHoverBorderWidth: 2,
+    //                 pointRadius: 1,
+    //                 pointHitRadius: 10,
+    //                 data: [65, 59, 80, 81, 56, 55, 40],
+    //                 spanGaps: false,
+    //             }
+    //         ]
+    //     }
+    // });
+
+    //
+    // const GOOGLE_PLEX: ILatLng = {
+    //   lat: 37.422034,
+    //   lng: -122.0862677
+    // };
+    // map.animateCamera({
+    //   target: GOOGLE_PLEX,
+    //   zoom: 17,
+    //   tilt: 30
+    // });
+    //
+    // const marker: Marker = map.addMarkerSync({
+    //   'title': 'Hello GoogleMap',
+    //   'animation': 'DROP',
+    //   'position': GOOGLE_PLEX
+    // });
+
+    // ElevationService.getElevationAlongPath({
+    //   samples: 15,
+    //   path: [{
+    //     lat: 37.420867,
+    //     lng: -122.082470
+    //   },
+    //   {
+    //     lat: 37.421122,
+    //     lng: -122.087780
+    //   }]
+    // }).then((result: any) => {
+    //   console.log(result);
+    // });
+
+
+  }
+
+  public onMapRelease() {
+    console.log('onMapRelease');
+  }
+}

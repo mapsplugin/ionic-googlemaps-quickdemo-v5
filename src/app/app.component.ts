@@ -13,34 +13,69 @@ export class AppComponent implements OnInit {
   public selectedIndex = 0;
   public appPages = [
     {
-      title: 'Inbox',
-      url: '/folder/Inbox',
-      icon: 'mail'
+      title: 'SimpleMap',
+      url: 'basics',
+      icon: 'map'
     },
     {
-      title: 'Outbox',
-      url: '/folder/Outbox',
-      icon: 'paper-plane'
+      title: 'Marker',
+      url: 'marker',
+      icon: 'pin'
     },
     {
-      title: 'Favorites',
-      url: '/folder/Favorites',
-      icon: 'heart'
+      title: 'MarkerCluster',
+      url: 'marker-cluster',
+      icon: 'pin'
     },
     {
-      title: 'Archived',
-      url: '/folder/Archived',
-      icon: 'archive'
+      title: 'HtmlInfoWindow',
+      url: 'html-info-window',
+      icon: 'pin'
     },
     {
-      title: 'Trash',
-      url: '/folder/Trash',
-      icon: 'trash'
+      title: 'Circle',
+      url: 'circle',
+      icon: 'pin'
     },
     {
-      title: 'Spam',
-      url: '/folder/Spam',
-      icon: 'warning'
+      title: 'Polyline',
+      url: 'polyline',
+      icon: 'pin'
+    },
+    {
+      title: 'Polygon',
+      url: 'polygon',
+      icon: 'pin'
+    },
+    {
+      title: 'GroundOverlay',
+      url: 'ground-overlay',
+      icon: 'pin'
+    },
+    {
+      title: 'Geocoding',
+      url: 'geocoding',
+      icon: 'pin'
+    },
+    {
+      title: 'TileOverlay',
+      url: 'tile-overlay',
+      icon: 'pin'
+    },
+    {
+      title: 'KmlOverlay',
+      url: 'kml-overlay',
+      icon: 'pin'
+    },
+    {
+      title: 'StreetView',
+      url: 'street-view',
+      icon: 'pin'
+    },
+    {
+      title: 'Directions',
+      url: 'directions',
+      icon: 'car'
     }
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];

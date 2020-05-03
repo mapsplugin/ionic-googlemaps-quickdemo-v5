@@ -1,0 +1,39 @@
+ion-menu-button {
+  color: var(--ion-color-primary);
+}
+
+#container {
+  position: relative;
+  width: 100%;
+  padding: 2vmin;
+}
+
+#container strong {
+  font-size: 20px;
+  line-height: 26px;
+}
+
+#container p {
+  font-size: 16px;
+  line-height: 22px;
+  color: #8c8c8c;
+  margin: 0;
+}
+
+#container a {
+  text-decoration: none;
+}
+
+#pano_canvas {
+  height: 80vh;
+  position: relative !important;
+}
+
+#map_canvas {
+  bottom: 5%;
+  left: 5%;
+  width: 150px;
+  height: 150px;
+  position: absolute !important;
+  z-index: 2;
+}

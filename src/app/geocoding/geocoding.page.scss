@@ -1,0 +1,41 @@
+#map_canvas1, #map_canvas2 {
+  height: 75%;
+}
+
+.smallPanel {
+  background-color:rgba(255,255,255,0.5);
+  z-index: 2 !important;
+}
+ion-menu-button {
+  color: var(--ion-color-primary);
+}
+
+#container {
+  position: relative;
+  width: 100%;
+  padding: 2vmin;
+}
+
+#container strong {
+  font-size: 20px;
+  line-height: 26px;
+}
+
+#container p {
+  font-size: 16px;
+  line-height: 22px;
+  color: #8c8c8c;
+  margin: 0;
+}
+
+#container a {
+  text-decoration: none;
+}
+
+#container #map_canvas {
+  width: 90vw;
+  height: 80vh;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  border: 1px solid white;
+}

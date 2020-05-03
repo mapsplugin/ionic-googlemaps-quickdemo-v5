@@ -4,12 +4,64 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'folder/Inbox',
+    redirectTo: 'basics',
     pathMatch: 'full'
   },
   {
-    path: 'folder/:id',
-    loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
+    path: 'basics',
+    loadChildren: () => import('./basics/basics.module').then( m => m.BasicsPageModule)
+  },
+  {
+    path: 'circle',
+    loadChildren: () => import('./circle/circle.module').then( m => m.CirclePageModule)
+  },
+  {
+    path: 'directions',
+    loadChildren: () => import('./directions/directions.module').then( m => m.DirectionsPageModule)
+  },
+  {
+    path: 'html-info-window',
+    loadChildren: () => import('./html-info-window/html-info-window.module').then( m => m.HtmlInfoWindowPageModule)
+  },
+  {
+    path: 'marker',
+    loadChildren: () => import('./marker/marker.module').then( m => m.MarkerPageModule)
+  },
+  {
+    path: 'marker-cluster',
+    loadChildren: () => import('./marker-cluster/marker-cluster.module').then( m => m.MarkerClusterPageModule)
+  },
+  {
+    path: 'polyline',
+    loadChildren: () => import('./polyline/polyline.module').then( m => m.PolylinePageModule)
+  },
+  {
+    path: 'polygon',
+    loadChildren: () => import('./polygon/polygon.module').then( m => m.PolygonPageModule)
+  },
+  {
+    path: 'circle',
+    loadChildren: () => import('./circle/circle.module').then( m => m.CirclePageModule)
+  },
+  {
+    path: 'ground-overlay',
+    loadChildren: () => import('./ground-overlay/ground-overlay.module').then( m => m.GroundOverlayPageModule)
+  },
+  {
+    path: 'geocoding',
+    loadChildren: () => import('./geocoding/geocoding.module').then( m => m.GeocodingPageModule)
+  },
+  {
+    path: 'tile-overlay',
+    loadChildren: () => import('./tile-overlay/tile-overlay.module').then( m => m.TileOverlayPageModule)
+  },
+  {
+    path: 'kml-overlay',
+    loadChildren: () => import('./kml-overlay/kml-overlay.module').then( m => m.KmlOverlayPageModule)
+  },
+  {
+    path: 'street-view',
+    loadChildren: () => import('./street-view/street-view.module').then( m => m.StreetViewPageModule)
   }
 ];
 
