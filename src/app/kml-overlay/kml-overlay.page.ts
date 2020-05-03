@@ -31,10 +31,10 @@ export class KmlOverlayPage implements OnInit {
 
   async loadMap() {
 
-        Environment.setEnv({
-          'API_KEY_FOR_BROWSER_RELEASE': '(YOUR_API_KEY_IS_HERE)',
-          'API_KEY_FOR_BROWSER_DEBUG': 'AIzaSyBzTWTKaMEeABaeBSa3_E6ZMxseK4xXl4k'  // optional
-        });
+    Environment.setEnv({
+      'API_KEY_FOR_BROWSER_RELEASE': '(YOUR_API_KEY_IS_HERE)',
+      'API_KEY_FOR_BROWSER_DEBUG': 'AIzaSyBzTWTKaMEeABaeBSa3_E6ZMxseK4xXl4k'  // optional
+    });
     this.loading = await this.loadingCtrl.create({
       message: 'Please wait...'
     });

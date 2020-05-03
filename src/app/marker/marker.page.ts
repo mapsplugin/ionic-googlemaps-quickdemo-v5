@@ -3,10 +3,13 @@ import {
   GoogleMaps,
   GoogleMap,
   GoogleMapsEvent,
+  LatLng,
   ILatLng,
   Marker,
   BaseArrayClass,
-  Environment
+  Environment,
+  LatLngBounds,
+  Spherical
 } from '@ionic-native/google-maps';
 import { Platform } from '@ionic/angular';
 
@@ -27,7 +30,7 @@ export class MarkerPage implements OnInit {
     await this.loadMap();
   }
 
-  loadMap() {
+  async loadMap() {
 
     Environment.setEnv({
       'API_KEY_FOR_BROWSER_RELEASE': '(YOUR_API_KEY_IS_HERE)',
@@ -61,35 +64,27 @@ export class MarkerPage implements OnInit {
         position: {lat:41.79567, lng:140.75845},
         title: "5",
         iconData:  "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAACVUlEQVRIS8WWjVXCMBRGwwTqBMIEuAG4ARuIE6gTKBOgEyAT4AbABjKBMIE/C+h3m6S2pWlJ8BzfOTkpad6770teEzom3bZy/VbrpYTopDjJZ6w2c77X6p9j46SCUXvuYDxHq04BZ2rPHXa3y/DRqlPAmdqZW+hrkMZEq44F52q3oGTdrjEpqmPBudoxKVBVKqsU1THgPbW+klNUt4GHCn6idqEGuMveerUeXFGtNTCvah9qaz+n2gMmKMGBnLrfjPFcMirZ7231XUF19RUJkIhPZqXnT8AM9Osy62v0VPihUqIfjWwx1RkJvbxIpjArhabfbEJ6zQYwysiiT3CW8kJ6Q4BgqMALEnqVNAqQZGSkM/R7nMOBLhZ/B/ZQeg9V/1EsrpLy5dIqP8aAXV6WlQIlZrWq/wzeBK0DM3Y0vA0aAh8FPwTaBC7B2W8+qUOMT4l9dYUUrJK2k4tCOHl7O7zK+Xx69nbWU/iebgKz1+9E+OYPToR1fqOe+SquujeBWdzlYGBPohhjW9b2lGbRa72bwLdyml5d2auvaPyeTOzIw4MxzCkal8h8no3cqT3WJd0ExuFmOjXmlhRIXbnfKZQ7hfJ4HDTM8wVIMi6xJ01y3mV8E5glGlDRGIEKS75DrAtFn/0DA3x/b0ddZbPgGt23JnBW0agpKPzUGCvhoT4iv1HG9Zodtc6HGBTYnoXAXc3UR5SbBwK1d8y+8RUAzxNwU2orOwQeyolF/lLT7mUqQ8BqCj4Bt+j1lR0Cs3Sopt8GFLYNF/2JU7K2k6stePL7fwP/AER2xy+mY1/QAAAAAElFTkSuQmCC"
-      }/*,
-      {
-        title: "6",
-        position: {lat:41.794470000000004, lng:140.75714000000002},
-        iconData: window.location.href.replace(/\/([^\/]+)$/, "") + "/../images/number-6-icon.png"
-      },
-      {
-        position: {lat:41.795010000000005, lng:140.75611},
-        iconData: "cdvfile://"   // The cdvfile:// protocol is acceptable.
-      },
-      {
-        position: {lat:41.79477000000001, lng:140.75484},
-        iconData: "file://"   // The file:// protocol is also acceptable.
-      },
-      {
-        position: {lat:41.79576, lng:140.75475},
-        iconData: "/path/to/image/file"  // Absolute path is also acceptable.
       }
-      */
     ]);
+
+    let bounds2: LatLngBounds = new LatLngBounds();
 
     let bounds: ILatLng[] = POINTS.map((data: any, idx: number) => {
       console.log(data);
+
+      [0, 90, 180, 270].forEach((degree: number) => {
+        bounds2.extend(Spherical.computeOffset(data.position, 100, degree));
+      });
+
       return data.position;
     });
 
     this.map = GoogleMaps.create('map_canvas', {
       camera: {
-        target: bounds
+        target: [
+          {"lat": 41.7947706796645, "lng": 140.75554365141653},
+          {"lat": 41.800139320335504, "lng": 140.76138630227848}
+        ]
       },
       'gestures': {
         'scroll': false,
@@ -98,8 +93,12 @@ export class MarkerPage implements OnInit {
         'zoom': false
       }
     });
-    POINTS.forEach((data: any) => {
+
+    console.log(bounds2.toString());
+
+    POINTS.forEach((data: any, idx: number) => {
       data.disableAutoPan = true;
+      data.title = JSON.stringify(data.iconData, null, 2);
       let marker: Marker = this.map.addMarkerSync(data);
       marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(this.onMarkerClick);
       marker.on(GoogleMapsEvent.INFO_CLICK).subscribe(this.onMarkerClick);

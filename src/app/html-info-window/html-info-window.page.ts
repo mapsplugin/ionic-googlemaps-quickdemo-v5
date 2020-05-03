@@ -27,7 +27,7 @@ export class HtmlInfoWindowPage implements OnInit {
     await this.loadMap();
   }
 
-  loadMap() {
+  async loadMap() {
     this.map = GoogleMaps.create('map_canvas', {
       camera: {
         target: {lat: 35.685208, lng: -121.168225},

@@ -45,7 +45,7 @@ export class PolygonPage implements OnInit {
     await this.loadMap();
   }
 
-  loadMap() {
+  async loadMap() {
 
     Environment.setEnv({
       'API_KEY_FOR_BROWSER_RELEASE': '(YOUR_API_KEY_IS_HERE)',

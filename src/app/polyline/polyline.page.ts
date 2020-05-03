@@ -28,12 +28,12 @@ export class PolylinePage implements OnInit {
     await this.loadMap();
   }
 
-  loadMap() {
+  async loadMap() {
 
-        Environment.setEnv({
-          'API_KEY_FOR_BROWSER_RELEASE': '(YOUR_API_KEY_IS_HERE)',
-          'API_KEY_FOR_BROWSER_DEBUG': 'AIzaSyBzTWTKaMEeABaeBSa3_E6ZMxseK4xXl4k'  // optional
-        });
+    Environment.setEnv({
+      'API_KEY_FOR_BROWSER_RELEASE': '(YOUR_API_KEY_IS_HERE)',
+      'API_KEY_FOR_BROWSER_DEBUG': 'AIzaSyBzTWTKaMEeABaeBSa3_E6ZMxseK4xXl4k'  // optional
+    });
     let HND_AIR_PORT = {lat: 35.548852, lng: 139.784086};
     let SFO_AIR_PORT = {lat: 37.615223, lng: -122.389979};
     let HNL_AIR_PORT = {lat: 21.324513, lng: -157.925074};

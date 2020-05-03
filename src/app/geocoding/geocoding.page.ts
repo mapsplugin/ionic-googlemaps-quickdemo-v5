@@ -18,7 +18,6 @@ import { LoadingController, Platform } from '@ionic/angular';
 export class GeocodingPage implements OnInit {
 
   map1: GoogleMap;
-  map2: GoogleMap;
   loading: any;
   @ViewChild('search_address', {static: true}) search_address: ElementRef;
 
@@ -31,7 +30,7 @@ export class GeocodingPage implements OnInit {
     await this.loadMap1();
   }
 
-  loadMap1() {
+  async loadMap1() {
 
     Environment.setEnv({
       'API_KEY_FOR_BROWSER_RELEASE': '(YOUR_API_KEY_IS_HERE)',
