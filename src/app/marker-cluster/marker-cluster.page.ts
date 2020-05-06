@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {
   GoogleMaps,
   GoogleMap,
@@ -7,7 +7,7 @@ import {
   Marker,
   Environment
 } from "@ionic-native/google-maps";
-import { Platform } from '@ionic/angular';
+import { MapService } from '../map.service';
 
 
 @Component({
@@ -15,26 +15,23 @@ import { Platform } from '@ionic/angular';
   templateUrl: './marker-cluster.page.html',
   styleUrls: ['./marker-cluster.page.scss'],
 })
-export class MarkerClusterPage implements OnInit {
+export class MarkerClusterPage implements OnInit, OnDestroy {
   map: GoogleMap;
 
 
-  constructor(private platform: Platform) { }
+  constructor(private mapService: MapService) { }
 
   async ngOnInit() {
     // Since ngOnInit() is executed before `deviceready` event,
     // you have to wait the event.
-    await this.platform.ready();
     await this.loadMap();
   }
 
+  async ngOnDestroy() {
+    await this.mapService.detachMap();
+  }
   async loadMap() {
-
-    Environment.setEnv({
-      'API_KEY_FOR_BROWSER_RELEASE': '(YOUR_API_KEY_IS_HERE)',
-      'API_KEY_FOR_BROWSER_DEBUG': 'AIzaSyBzTWTKaMEeABaeBSa3_E6ZMxseK4xXl4k'  // optional
-    });
-    this.map = GoogleMaps.create('map_canvas', {
+    this.map = await this.mapService.attachMap('map_canvas', {
       'camera': {
         'target': {
           "lat": 21.382314,

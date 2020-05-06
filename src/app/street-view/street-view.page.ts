@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {
   GoogleMaps,
   GoogleMap,
@@ -10,37 +10,35 @@ import {
   StreetViewLocation,
   Environment
 } from '@ionic-native/google-maps';
-import { Platform } from '@ionic/angular';
+import { MapService } from '../map.service';
 
 @Component({
   selector: 'app-street-view',
   templateUrl: './street-view.page.html',
   styleUrls: ['./street-view.page.scss'],
 })
-export class StreetViewPage implements OnInit {
+export class StreetViewPage implements OnInit, OnDestroy {
 
   panorama: StreetViewPanorama;
   map: GoogleMap;
   marker: Marker;
 
-  constructor(private platform: Platform) { }
+  constructor(private mapService: MapService) { }
 
   async ngOnInit() {
     // Since ngOnInit() is executed before `deviceready` event,
     // you have to wait the event.
-    await this.platform.ready();
     await this.loadMap();
   }
 
+  async ngOnDestroy() {
+    this.panorama.remove();
+    await this.mapService.detachMap();
+  }
   async loadMap() {
-
-        Environment.setEnv({
-          'API_KEY_FOR_BROWSER_RELEASE': '(YOUR_API_KEY_IS_HERE)',
-          'API_KEY_FOR_BROWSER_DEBUG': 'AIzaSyBzTWTKaMEeABaeBSa3_E6ZMxseK4xXl4k'  // optional
-        });
     let initialPos: ILatLng = {lat: 42.345573, lng: -71.098326};
 
-    this.map = GoogleMaps.create('map_canvas', {
+    this.map = await this.mapService.attachMap('map_canvas', {
       camera: {
         target: initialPos,
         zoom: 17

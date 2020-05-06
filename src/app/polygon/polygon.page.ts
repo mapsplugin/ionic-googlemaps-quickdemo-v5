@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {
   GoogleMaps,
   GoogleMap,
@@ -10,14 +10,14 @@ import {
   LatLng,
   Environment
 } from '@ionic-native/google-maps';
-import { Platform } from '@ionic/angular';
+import { MapService } from '../map.service';
 
 @Component({
   selector: 'app-polygon',
   templateUrl: './polygon.page.html',
   styleUrls: ['./polygon.page.scss'],
 })
-export class PolygonPage implements OnInit {
+export class PolygonPage implements OnInit, OnDestroy {
 
   map: GoogleMap;
 
@@ -36,22 +36,20 @@ export class PolygonPage implements OnInit {
     {lat: 41.79909000000001, lng: 140.75465}
   ];
 
-  constructor(private platform: Platform) { }
+
+  constructor(private mapService: MapService) { }
 
   async ngOnInit() {
     // Since ngOnInit() is executed before `deviceready` event,
     // you have to wait the event.
-    await this.platform.ready();
     await this.loadMap();
   }
 
+  async ngOnDestroy() {
+    await this.mapService.detachMap();
+  }
   async loadMap() {
-
-    Environment.setEnv({
-      'API_KEY_FOR_BROWSER_RELEASE': '(YOUR_API_KEY_IS_HERE)',
-      'API_KEY_FOR_BROWSER_DEBUG': 'AIzaSyBzTWTKaMEeABaeBSa3_E6ZMxseK4xXl4k'  // optional
-    });
-    this.map = GoogleMaps.create('map_canvas', {
+    this.map = await this.mapService.attachMap('map_canvas', {
       camera: {
         target: this.GORYOKAKU_POINTS
       },

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import {
   GoogleMaps,
@@ -11,41 +11,39 @@ import {
   ILatLng
 } from '@ionic-native/google-maps';
 import { Chart } from 'chart.js';
+import { MapService } from '../map.service';
 
 @Component({
   selector: 'app-elevation',
   templateUrl: './elevation.page.html',
   styleUrls: ['./elevation.page.scss'],
 })
-export class ElevationPage implements OnInit {
+export class ElevationPage implements OnInit, OnDestroy {
   title: string = "Get elevation along with path";
   description: string = "This example creates a map that's on Google Headquarter, USA";
   lineChart: any;
   @ViewChild('lineCanvas', {static: true}) lineCanvas;
   map: GoogleMap;
 
-  constructor(private platform: Platform) {
-
-  }
+  constructor(private mapService: MapService) {}
 
   async ngOnInit() {
     // Since ngOnInit() is executed before `deviceready` event,
     // you have to wait the event.
-    await this.platform.ready();
     await this.loadMap();
   }
-  async loadMap() {
 
-    Environment.setEnv({
-      'API_KEY_FOR_BROWSER_RELEASE': '(YOUR_API_KEY_IS_HERE)',
-      'API_KEY_FOR_BROWSER_DEBUG': 'AIzaSyBzTWTKaMEeABaeBSa3_E6ZMxseK4xXl4k'  // optional
-    });
+  async ngOnDestroy() {
+    await this.mapService.detachMap();
+  }
+
+  async loadMap() {
 
     const GOOGLE_PLEX: ILatLng = {
       lat: 37.422034,
       lng: -122.0862677
     };
-    this.map = GoogleMaps.create('map_canvas', {
+    this.map = await this.mapService.attachMap('map_canvas', {
       'camera': {
         'target': GOOGLE_PLEX,
         zoom: 17,

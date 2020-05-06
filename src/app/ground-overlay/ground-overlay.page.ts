@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {
   GoogleMaps,
   GoogleMap,
   GoogleMapsEvent,
   ILatLng,
   GroundOverlay,
-  Marker,
-  Environment
+  Marker
 } from '@ionic-native/google-maps';
 import { Platform } from '@ionic/angular';
+import { MapService } from '../map.service';
 
 
 @Component({
@@ -16,34 +16,33 @@ import { Platform } from '@ionic/angular';
   templateUrl: './ground-overlay.page.html',
   styleUrls: ['./ground-overlay.page.scss'],
 })
-export class GroundOverlayPage implements OnInit {
+export class GroundOverlayPage implements OnInit, OnDestroy {
 
   map: GoogleMap;
   groundOverlay: GroundOverlay;
   marker1: Marker;
   marker2: Marker;
 
-  constructor(private platform: Platform) { }
+  constructor(private mapService: MapService) {}
 
   async ngOnInit() {
     // Since ngOnInit() is executed before `deviceready` event,
     // you have to wait the event.
-    await this.platform.ready();
     await this.loadMap();
+  }
+
+  async ngOnDestroy() {
+    await this.mapService.detachMap();
   }
 
   async loadMap() {
 
-    Environment.setEnv({
-      'API_KEY_FOR_BROWSER_RELEASE': '(YOUR_API_KEY_IS_HERE)',
-      'API_KEY_FOR_BROWSER_DEBUG': 'AIzaSyBzTWTKaMEeABaeBSa3_E6ZMxseK4xXl4k'  // optional
-    });
     let bounds: ILatLng[] = [
       {"lat": 40.712216, "lng": -74.22655},
       {"lat": 40.773941, "lng": -74.12544}
     ];
 
-    this.map = GoogleMaps.create('map_canvas', {
+    this.map = await this.mapService.attachMap('map_canvas', {
       camera: {
         target: bounds
       },

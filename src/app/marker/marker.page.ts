@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {
   GoogleMaps,
   GoogleMap,
@@ -11,31 +11,30 @@ import {
   LatLngBounds,
   Spherical
 } from '@ionic-native/google-maps';
-import { Platform } from '@ionic/angular';
+import { MapService } from '../map.service';
 
 @Component({
   selector: 'app-marker',
   templateUrl: './marker.page.html',
   styleUrls: ['./marker.page.scss'],
 })
-export class MarkerPage implements OnInit {
+export class MarkerPage implements OnInit, OnDestroy {
   map: GoogleMap;
 
-  constructor(private platform: Platform) { }
+  constructor(private mapService: MapService) { }
 
   async ngOnInit() {
     // Since ngOnInit() is executed before `deviceready` event,
     // you have to wait the event.
-    await this.platform.ready();
     await this.loadMap();
+  }
+
+  async ngOnDestroy() {
+    await this.mapService.detachMap();
   }
 
   async loadMap() {
 
-    Environment.setEnv({
-      'API_KEY_FOR_BROWSER_RELEASE': '(YOUR_API_KEY_IS_HERE)',
-      'API_KEY_FOR_BROWSER_DEBUG': 'AIzaSyBzTWTKaMEeABaeBSa3_E6ZMxseK4xXl4k'  // optional
-    });
     let POINTS: BaseArrayClass<any> = new BaseArrayClass<any>([
       {
         position: {lat:41.79883, lng:140.75675},
@@ -67,19 +66,7 @@ export class MarkerPage implements OnInit {
       }
     ]);
 
-    let bounds2: LatLngBounds = new LatLngBounds();
-
-    let bounds: ILatLng[] = POINTS.map((data: any, idx: number) => {
-      console.log(data);
-
-      [0, 90, 180, 270].forEach((degree: number) => {
-        bounds2.extend(Spherical.computeOffset(data.position, 100, degree));
-      });
-
-      return data.position;
-    });
-
-    this.map = GoogleMaps.create('map_canvas', {
+    this.map = await this.mapService.attachMap('map_canvas', {
       camera: {
         target: [
           {"lat": 41.7947706796645, "lng": 140.75554365141653},
@@ -93,8 +80,6 @@ export class MarkerPage implements OnInit {
         'zoom': false
       }
     });
-
-    console.log(bounds2.toString());
 
     POINTS.forEach((data: any, idx: number) => {
       data.disableAutoPan = true;

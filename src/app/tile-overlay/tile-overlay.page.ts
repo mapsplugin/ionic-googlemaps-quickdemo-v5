@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {
   GoogleMaps,
   GoogleMap,
@@ -6,7 +6,7 @@ import {
   MapTypeId,
   Environment
 } from '@ionic-native/google-maps';
-import { Platform } from '@ionic/angular';
+import { MapService } from '../map.service';
 
 
 @Component({
@@ -14,26 +14,24 @@ import { Platform } from '@ionic/angular';
   templateUrl: './tile-overlay.page.html',
   styleUrls: ['./tile-overlay.page.scss'],
 })
-export class TileOverlayPage implements OnInit {
+export class TileOverlayPage implements OnInit, OnDestroy {
 
   map: GoogleMap;
   layers = [];
 
-  constructor(private platform: Platform) { }
+  constructor(private mapService: MapService) { }
 
   async ngOnInit() {
     // Since ngOnInit() is executed before `deviceready` event,
     // you have to wait the event.
-    await this.platform.ready();
     await this.loadMap();
   }
-  async loadMap() {
 
-    Environment.setEnv({
-      'API_KEY_FOR_BROWSER_RELEASE': '(YOUR_API_KEY_IS_HERE)',
-      'API_KEY_FOR_BROWSER_DEBUG': 'AIzaSyBzTWTKaMEeABaeBSa3_E6ZMxseK4xXl4k'  // optional
-    });
-    this.map = GoogleMaps.create('map_canvas', {
+  async ngOnDestroy() {
+    await this.mapService.detachMap();
+  }
+  async loadMap() {
+    this.map = await this.mapService.attachMap('map_canvas', {
       'mapType': MapTypeId.NONE
     });
 

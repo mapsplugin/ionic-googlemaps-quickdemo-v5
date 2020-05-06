@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit, OnDestroy, NgZone } from '@angular/core';
 import {
   GoogleMaps,
   GoogleMap,
@@ -7,28 +7,31 @@ import {
   HtmlInfoWindow,
   Environment
 } from '@ionic-native/google-maps';
-import { Platform } from '@ionic/angular';
+import { MapService } from '../map.service';
 
 @Component({
   selector: 'app-html-info-window',
   templateUrl: './html-info-window.page.html',
   styleUrls: ['./html-info-window.page.scss'],
 })
-export class HtmlInfoWindowPage implements OnInit {
+export class HtmlInfoWindowPage implements OnInit, OnDestroy {
 
   map: GoogleMap;
 
-  constructor(private platform: Platform, private _ngZone: NgZone) { }
+  constructor(private mapService: MapService, private _ngZone: NgZone) { }
 
   async ngOnInit() {
     // Since ngOnInit() is executed before `deviceready` event,
     // you have to wait the event.
-    await this.platform.ready();
     await this.loadMap();
   }
 
+  async ngOnDestroy() {
+    await this.mapService.detachMap();
+  }
+  
   async loadMap() {
-    this.map = GoogleMaps.create('map_canvas', {
+    this.map = await this.mapService.attachMap('map_canvas', {
       camera: {
         target: {lat: 35.685208, lng: -121.168225},
         zoom: 19,

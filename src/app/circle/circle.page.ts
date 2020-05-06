@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {
   GoogleMaps,
   GoogleMap,
@@ -6,9 +6,10 @@ import {
   ILatLng,
   Circle,
   Marker,
-  Spherical,
-  Environment
+  Spherical
 } from '@ionic-native/google-maps';
+import { MapService } from '../map.service';
+
 import { Platform } from '@ionic/angular';
 
 
@@ -17,24 +18,30 @@ import { Platform } from '@ionic/angular';
   templateUrl: './circle.page.html',
   styleUrls: ['./circle.page.scss'],
 })
-export class CirclePage implements OnInit {
+export class CirclePage implements OnInit, OnDestroy {
 
   map: GoogleMap;
 
-  constructor(private platform: Platform) { }
+  constructor(private platform: Platform,
+    private mapService: MapService) { }
 
   async ngOnInit() {
     // Since ngOnInit() is executed before `deviceready` event,
     // you have to wait the event.
-    await this.platform.ready();
+    // await this.platform.ready();
     await this.loadMap();
   }
 
+  async ngOnDestroy() {
+    await this.mapService.detachMap();
+  }
+
   async loadMap() {
-    Environment.setEnv({
-      'API_KEY_FOR_BROWSER_RELEASE': '(YOUR_API_KEY_IS_HERE)',
-      'API_KEY_FOR_BROWSER_DEBUG': 'AIzaSyBzTWTKaMEeABaeBSa3_E6ZMxseK4xXl4k'  // optional
-    });
+    await this.platform.ready();
+    // Environment.setEnv({
+    //   'API_KEY_FOR_BROWSER_RELEASE': '(YOUR_API_KEY_IS_HERE)',
+    //   'API_KEY_FOR_BROWSER_DEBUG': 'AIzaSyBzTWTKaMEeABaeBSa3_E6ZMxseK4xXl4k'  // optional
+    // });
     let center: ILatLng = {"lat": 32, "lng": -97};
 
     let radius = 300;  // radius (meter)
@@ -44,10 +51,22 @@ export class CirclePage implements OnInit {
       return Spherical.computeOffset(center, radius, degree);
     });
 
-    this.map = GoogleMaps.create('map_canvas', {
+    // this.map = GoogleMaps.create('map_canvas', {
+    //   'camera': {
+    //     'target': positions,
+    //     'padding': 100
+    //   },
+    //   'gestures': {
+    //     'scroll': false,
+    //     'tilt': false,
+    //     'rotate': false,
+    //     'zoom': false
+    //   }
+    // });
+    this.map = await this.mapService.attachMap('map_canvas', {
       'camera': {
         'target': positions,
-        'padding': 100
+        'padding': 20
       },
       'gestures': {
         'scroll': false,

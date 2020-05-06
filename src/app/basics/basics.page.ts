@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {
   ToastController,
   Platform,
@@ -13,13 +13,14 @@ import {
   MyLocation,
   Environment
 } from '@ionic-native/google-maps';
+import { MapService } from '../map.service';
 
 @Component({
   selector: 'app-basics',
   templateUrl: './basics.page.html',
   styleUrls: ['./basics.page.scss'],
 })
-export class BasicsPage implements OnInit {
+export class BasicsPage implements OnInit, OnDestroy {
   public title: string = 'Hello';
   public description: string = 'world';
 
@@ -29,24 +30,39 @@ export class BasicsPage implements OnInit {
   constructor(
     public loadingCtrl: LoadingController,
     public toastCtrl: ToastController,
-    private platform: Platform) {
+    private mapService: MapService) {
 
   }
 
   async ngOnInit() {
     // Since ngOnInit() is executed before `deviceready` event,
     // you have to wait the event.
-    await this.platform.ready();
+    // await this.platform.ready();
+    // await this.loadMap();
     await this.loadMap();
   }
 
-  async loadMap() {
+  async ngOnDestroy() {
+    await this.mapService.detachMap();
+  }
 
-    Environment.setEnv({
-      'API_KEY_FOR_BROWSER_RELEASE': '(YOUR_API_KEY_IS_HERE)',
-      'API_KEY_FOR_BROWSER_DEBUG': 'AIzaSyBzTWTKaMEeABaeBSa3_E6ZMxseK4xXl4k'  // optional
-    });
-    this.map = GoogleMaps.create('map_canvas', {
+  async loadMap() {
+    //
+    // Environment.setEnv({
+    //   'API_KEY_FOR_BROWSER_RELEASE': '(YOUR_API_KEY_IS_HERE)',
+    //   'API_KEY_FOR_BROWSER_DEBUG': 'AIzaSyBzTWTKaMEeABaeBSa3_E6ZMxseK4xXl4k'  // optional
+    // });
+    // this.map = GoogleMaps.create('map_canvas', {
+    //   camera: {
+    //     target: {
+    //       lat: 43.0741704,
+    //       lng: -89.3809802
+    //     },
+    //     zoom: 18,
+    //     tilt: 30
+    //   }
+    // });
+    this.map = await this.mapService.attachMap('map_canvas', {
       camera: {
         target: {
           lat: 43.0741704,
