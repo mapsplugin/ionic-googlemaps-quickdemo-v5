@@ -18,23 +18,23 @@ export class MapService {
 
     await this.platform.ready();
     if (this.map) {
-      return (new Promise((resolve) => {
-        setTimeout(() => {
-          this.map.setDiv(divId);
-          resolve();
-        }, 1000);
-      }))
-      .then(() => {
-        return (new Promise((resolve) => {
-          this.map.setOptions(options);
-          resolve(this.map);
-        }));
-      });
-    } else {
-      return (new Promise((resolve) => {
-        this._loadMap(divId, options).then((map: GoogleMap) => resolve);
+      await (new Promise((resolve) => {
+        const instance: any = setInterval(() => {
+          if (document.querySelectorAll('#' + divId).length > 0) {
+            clearInterval(instance);
+            resolve();
+          }
+        }, 100);
       }));
-    }
+      await this.map.setDiv(divId);
+      await (new Promise((resolve) => {
+        setTimeout(resolve, 100); // for secure.
+      }));
+      await this.map.setOptions(options);
+    } else {
+      await this._loadMap(divId, options);
+    };
+    return Promise.resolve(this.map);
   }
 
   async _loadMap(divId: string, options?: GoogleMapOptions) {
@@ -48,7 +48,7 @@ export class MapService {
     this.map = GoogleMaps.create(divId, options);
     return (new Promise((resolve) => {
       this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
-        resolve(this.map);
+        resolve();
       });
     }));
   }
@@ -63,7 +63,8 @@ export class MapService {
         },
         'zoom': 0,
         'bearing': 0,
-        'tilt': 0
+        'tilt': 0,
+        'padding': 0
       },
       'gestures': {
         'scroll': true,
@@ -80,7 +81,7 @@ export class MapService {
         'gestureBounds': null
       }
     });
-    this.map.setDiv();
+    await this.map.setDiv();
     await this.map.clear();
   }
 }

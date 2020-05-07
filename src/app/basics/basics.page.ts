@@ -35,10 +35,6 @@ export class BasicsPage implements OnInit, OnDestroy {
   }
 
   async ngOnInit() {
-    // Since ngOnInit() is executed before `deviceready` event,
-    // you have to wait the event.
-    // await this.platform.ready();
-    // await this.loadMap();
     await this.loadMap();
   }
 
@@ -47,21 +43,6 @@ export class BasicsPage implements OnInit, OnDestroy {
   }
 
   async loadMap() {
-    //
-    // Environment.setEnv({
-    //   'API_KEY_FOR_BROWSER_RELEASE': '(YOUR_API_KEY_IS_HERE)',
-    //   'API_KEY_FOR_BROWSER_DEBUG': 'AIzaSyBzTWTKaMEeABaeBSa3_E6ZMxseK4xXl4k'  // optional
-    // });
-    // this.map = GoogleMaps.create('map_canvas', {
-    //   camera: {
-    //     target: {
-    //       lat: 43.0741704,
-    //       lng: -89.3809802
-    //     },
-    //     zoom: 18,
-    //     tilt: 30
-    //   }
-    // });
     this.map = await this.mapService.attachMap('map_canvas', {
       camera: {
         target: {

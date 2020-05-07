@@ -6,7 +6,8 @@ import {
   ILatLng,
   Circle,
   Marker,
-  Spherical
+  Spherical,
+  Polygon
 } from '@ionic-native/google-maps';
 import { MapService } from '../map.service';
 
@@ -76,10 +77,12 @@ export class CirclePage implements OnInit, OnDestroy {
       }
     });
 
+
     let marker: Marker = this.map.addMarkerSync({
       position: positions[0],
       draggable: true,
-      title: 'Drag me!'
+      title: 'Drag me!',
+      disableAutoPan: true
     });
     marker.trigger(GoogleMapsEvent.MARKER_CLICK);
 
