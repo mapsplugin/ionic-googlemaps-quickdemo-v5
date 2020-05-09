@@ -26,15 +26,12 @@ export class CirclePage implements OnInit, OnDestroy {
   constructor(private platform: Platform,
     private mapService: MapService) { }
 
-  async ngOnInit() {
-    // Since ngOnInit() is executed before `deviceready` event,
-    // you have to wait the event.
-    // await this.platform.ready();
-    await this.loadMap();
+  ngOnInit() {
+    this.loadMap();
   }
 
-  async ngOnDestroy() {
-    await this.mapService.detachMap();
+  ngOnDestroy() {
+    this.mapService.detachMap();
   }
 
   async loadMap() {

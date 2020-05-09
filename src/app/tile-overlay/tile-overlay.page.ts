@@ -21,18 +21,24 @@ export class TileOverlayPage implements OnInit, OnDestroy {
 
   constructor(private mapService: MapService) { }
 
-  async ngOnInit() {
-    // Since ngOnInit() is executed before `deviceready` event,
-    // you have to wait the event.
-    await this.loadMap();
+  ngOnInit() {
+    this.loadMap();
   }
 
-  async ngOnDestroy() {
-    await this.mapService.detachMap();
+  ngOnDestroy() {
+    this.mapService.detachMap();
   }
+
   async loadMap() {
     this.map = await this.mapService.attachMap('map_canvas', {
-      'mapType': MapTypeId.NONE
+      'mapType': MapTypeId.NONE,
+      'camera': {
+        'target': {
+          lat: 43.0741704,
+          lng: -89.3809802
+        },
+        'zoom': 2
+      }
     });
 
     [

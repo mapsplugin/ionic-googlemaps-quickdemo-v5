@@ -28,13 +28,14 @@ export class DirectionsPage implements OnInit, OnDestroy {
 
   constructor(private mapService: MapService) {}
 
-  async ngOnInit() {
-    await this.loadMap();
+  ngOnInit() {
+    this.loadMap();
   }
 
-  async ngOnDestroy() {
-    await this.mapService.detachMap();
+  ngOnDestroy() {
+    this.mapService.detachMap();
   }
+
   async loadMap() {
 
     const origin: ILatLng = {lat: 33.816839, lng: -118.3418066};

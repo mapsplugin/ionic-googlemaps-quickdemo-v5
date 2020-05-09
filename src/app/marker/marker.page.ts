@@ -12,6 +12,7 @@ import {
   Spherical
 } from '@ionic-native/google-maps';
 import { MapService } from '../map.service';
+import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-marker',
@@ -21,19 +22,21 @@ import { MapService } from '../map.service';
 export class MarkerPage implements OnInit, OnDestroy {
   map: GoogleMap;
 
-  constructor(private mapService: MapService) { }
+  constructor(
+    private platform: Platform,
+    private mapService: MapService
+  ) { }
 
-  async ngOnInit() {
-    // Since ngOnInit() is executed before `deviceready` event,
-    // you have to wait the event.
-    await this.loadMap();
+  ngOnInit() {
+    this.loadMap();
   }
 
-  async ngOnDestroy() {
-    await this.mapService.detachMap();
+  ngOnDestroy() {
+    this.mapService.detachMap();
   }
 
   async loadMap() {
+    await this.platform.ready();
 
     let POINTS: BaseArrayClass<any> = new BaseArrayClass<any>([
       {

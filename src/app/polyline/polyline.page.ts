@@ -21,14 +21,14 @@ export class PolylinePage implements OnInit, OnDestroy {
 
   constructor(private mapService: MapService) { }
 
-  async ngOnInit() {
-    await this.loadMap();
+  ngOnInit() {
+    this.loadMap();
   }
 
-  async ngOnDestroy() {
-    await this.mapService.detachMap();
+  ngOnDestroy() {
+    this.mapService.detachMap();
   }
-  
+
   async loadMap() {
     let HND_AIR_PORT = {lat: 35.548852, lng: 139.784086};
     let SFO_AIR_PORT = {lat: 37.615223, lng: -122.389979};

@@ -16,9 +16,8 @@ export class MapService {
   async attachMap(divId: string, options?: GoogleMapOptions): Promise<GoogleMap> {
     options = options || {};
 
-    await this.platform.ready();
     if (this.map) {
-      await (new Promise((resolve) => {
+       await (new Promise((resolve) => {
         const instance: any = setInterval(() => {
           if (document.querySelectorAll('#' + divId).length > 0) {
             clearInterval(instance);
@@ -27,17 +26,18 @@ export class MapService {
         }, 100);
       }));
       await this.map.setDiv(divId);
-      await (new Promise((resolve) => {
-        setTimeout(resolve, 100); // for secure.
-      }));
+      // await (new Promise((resolve) => {
+      //   setTimeout(resolve, 100); // for secure.
+      // }));
       await this.map.setOptions(options);
     } else {
+      await this.platform.ready();
       await this._loadMap(divId, options);
-    };
+    }
     return Promise.resolve(this.map);
   }
 
-  async _loadMap(divId: string, options?: GoogleMapOptions) {
+  _loadMap(divId: string, options?: GoogleMapOptions) {
 
     Environment.setEnv({
       'API_KEY_FOR_BROWSER_RELEASE': '(YOUR_API_KEY_IS_HERE)',
@@ -53,7 +53,7 @@ export class MapService {
     }));
   }
 
-  async detachMap() {
+  detachMap() {
     this.map.setOptions({
       'mapType': MapTypeId.NORMAL,
       'camera': {
@@ -61,7 +61,7 @@ export class MapService {
           'lat': 0,
           'lng': 0
         },
-        'zoom': 0,
+        'zoom': 1,
         'bearing': 0,
         'tilt': 0,
         'padding': 0
@@ -81,7 +81,7 @@ export class MapService {
         'gestureBounds': null
       }
     });
-    await this.map.setDiv();
-    await this.map.clear();
+    this.map.clear();
+    this.map.setDiv();
   }
 }

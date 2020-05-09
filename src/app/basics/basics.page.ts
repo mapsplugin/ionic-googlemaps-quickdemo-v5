@@ -34,12 +34,12 @@ export class BasicsPage implements OnInit, OnDestroy {
 
   }
 
-  async ngOnInit() {
-    await this.loadMap();
+  ngOnInit() {
+    this.loadMap();
   }
 
-  async ngOnDestroy() {
-    await this.mapService.detachMap();
+  ngOnDestroy() {
+    this.mapService.detachMap();
   }
 
   async loadMap() {

@@ -27,80 +27,112 @@ export class ElevationPage implements OnInit, OnDestroy {
 
   constructor(private mapService: MapService) {}
 
-  async ngOnInit() {
-    // Since ngOnInit() is executed before `deviceready` event,
-    // you have to wait the event.
-    await this.loadMap();
+  ngOnInit() {
+    this.loadMap();
   }
 
-  async ngOnDestroy() {
-    await this.mapService.detachMap();
+  ngOnDestroy() {
+    this.mapService.detachMap();
   }
 
   async loadMap() {
 
-    const GOOGLE_PLEX: ILatLng = {
-      lat: 37.422034,
-      lng: -122.0862677
-    };
+    const path: ILatLng[] = [
+    {
+      lat: 37.421122,
+      lng: -122.087780
+    },
+    {
+      lat: 37.420867,
+      lng: -122.082470
+    }];
+
     this.map = await this.mapService.attachMap('map_canvas', {
       'camera': {
-        'target': GOOGLE_PLEX,
-        zoom: 17,
-        tilt: 30
+        'target': path
+      },
+      'gestures': {
+        'scroll': false,
+        'tilt': false,
+        'rotate': false,
+        'zoom': false
+      },
+      'controls': {
+        'zoom': false
       }
     });
 
     ElevationService.getElevationAlongPath({
       samples: 15,
-      path: [{
-        lat: 37.420867,
-        lng: -122.082470
-      },
-      {
-        lat: 37.421122,
-        lng: -122.087780
-      }]
+      path: path
     }).then((results: ElevationResult[]) => {
-      results.forEach((result: ElevationResult) => {
+      const cnt: number = results.length;
+
+      let minElevation: number = 2^31 - 1;
+      let maxElevation: number = 0;
+      const values: number[] = [];
+      const labels: number[] = [];
+
+      results.forEach((result: ElevationResult, idx: number) => {
+        minElevation = Math.min(minElevation, result.elevation);
+        maxElevation = Math.max(maxElevation, result.elevation);
+      });
+      minElevation = Math.floor(minElevation);
+      maxElevation = Math.ceil(maxElevation);
+
+      const elevStep: number = Math.ceil((maxElevation - minElevation) / cnt);
+      results.forEach((result: ElevationResult, idx: number) => {
         this.map.addMarker({
           'position': result.location,
-          'title': result.elevation.toFixed(2) + 'm'
+          'title': result.elevation.toFixed(2) + 'm',
+          'idx': idx,
+          'icon': {
+            'url': './assets/icon/marker.png',
+            'size': {
+              'width': Math.floor(24  * (result.elevation / maxElevation)),
+              'height': Math.floor(40 * (result.elevation / maxElevation))
+            }
+          },
+          'disableAutoPan': true
         });
+        values.push(Math.floor(result.elevation * 100) / 100);
+        labels.push(idx + 1);
+      });
+
+
+
+      this.lineChart = new Chart(this.lineCanvas.nativeElement, {
+          type: 'line',
+          data: {
+              labels: labels,
+              datasets: [
+                  {
+                      label: 'Elevation',
+                      fill: false,
+                      lineTension: 0.1,
+                      backgroundColor: 'rgba(75,192,192,0.4)',
+                      borderColor: 'rgba(75,192,192,1)',
+                      borderCapStyle: 'butt',
+                      borderDash: [],
+                      borderDashOffset: 0.0,
+                      borderJoinStyle: 'miter',
+                      pointBorderColor: 'rgba(75,192,192,1)',
+                      pointBackgroundColor: '#fff',
+                      pointBorderWidth: 1,
+                      pointHoverRadius: 5,
+                      pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+                      pointHoverBorderColor: 'rgba(220,220,220,1)',
+                      pointHoverBorderWidth: 2,
+                      pointRadius: 1,
+                      pointHitRadius: 10,
+                      data: values,
+                      spanGaps: false,
+                  }
+              ]
+          }
       });
     });
 
-
-    this.lineChart = new Chart(this.lineCanvas.nativeElement, {
-        type: 'line',
-        data: {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-            datasets: [
-                {
-                    label: 'My First dataset',
-                    fill: false,
-                    lineTension: 0.1,
-                    backgroundColor: 'rgba(75,192,192,0.4)',
-                    borderColor: 'rgba(75,192,192,1)',
-                    borderCapStyle: 'butt',
-                    borderDash: [],
-                    borderDashOffset: 0.0,
-                    borderJoinStyle: 'miter',
-                    pointBorderColor: 'rgba(75,192,192,1)',
-                    pointBackgroundColor: '#fff',
-                    pointBorderWidth: 1,
-                    pointHoverRadius: 5,
-                    pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-                    pointHoverBorderColor: 'rgba(220,220,220,1)',
-                    pointHoverBorderWidth: 2,
-                    pointRadius: 1,
-                    pointHitRadius: 10,
-                    data: [65, 59, 80, 81, 56, 55, 40],
-                    spanGaps: false,
-                }
-            ]
-        }
-    });
 
   }
 }
