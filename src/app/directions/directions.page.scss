@@ -24,10 +24,15 @@ ion-menu-button {
   text-decoration: none;
 }
 
-#container #map_canvas {
+.work_pane {
   width: 100%;
-  height: 80vh;
-  margin-top: 1%;
-  margin-bottom: 1%;
+  height: 85vh;
+}
+as-split-area {
+  overflow: hidden;
+}
+#map_canvas, #guide {
+  width: 100%;
+  height: 100%;
   border: 1px solid white;
 }

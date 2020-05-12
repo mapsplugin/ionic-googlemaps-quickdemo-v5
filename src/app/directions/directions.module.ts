@@ -7,9 +7,11 @@ import { IonicModule } from '@ionic/angular';
 import { DirectionsPageRoutingModule } from './directions-routing.module';
 
 import { DirectionsPage } from './directions.page';
+import { AngularSplitModule } from 'angular-split';
 
 @NgModule({
   imports: [
+    AngularSplitModule.forRoot(),
     CommonModule,
     FormsModule,
     IonicModule,

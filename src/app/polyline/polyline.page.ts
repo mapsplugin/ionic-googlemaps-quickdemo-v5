@@ -5,6 +5,7 @@ import {
   GoogleMapsEvent,
   Polyline,
   LatLng,
+  ILatLng,
   Marker,
   Environment
 } from '@ionic-native/google-maps';
@@ -30,18 +31,18 @@ export class PolylinePage implements OnInit, OnDestroy {
   }
 
   async loadMap() {
-    let HND_AIR_PORT = {lat: 35.548852, lng: 139.784086};
-    let SFO_AIR_PORT = {lat: 37.615223, lng: -122.389979};
-    let HNL_AIR_PORT = {lat: 21.324513, lng: -157.925074};
-    let AIR_PORTS = [
+    const HND_AIR_PORT: ILatLng = {lat: 35.548852, lng: 139.784086};
+    const SFO_AIR_PORT: ILatLng = {lat: 37.615223, lng: -122.389979};
+    const HNL_AIR_PORT: ILatLng = {lat: 21.324513, lng: -157.925074};
+    const AIR_PORTS: ILatLng[] = [
       HND_AIR_PORT,
       HNL_AIR_PORT,
       SFO_AIR_PORT
     ];
 
     this.map = await this.mapService.attachMap('map_canvas', {
-      camera: {
-        target: AIR_PORTS
+      'camera': {
+        'target': AIR_PORTS
       },
       'gestures': {
         'scroll': false,
@@ -51,18 +52,18 @@ export class PolylinePage implements OnInit, OnDestroy {
       }
     });
 
-    let polyline: Polyline = this.map.addPolylineSync({
-      points: AIR_PORTS,
-      color: '#AA00FF',
-      width: 10,
-      geodesic: true,
-      clickable: true  // clickable = false in default
+    const polyline: Polyline = this.map.addPolylineSync({
+      'points': AIR_PORTS,
+      'color': '#AA00FF',
+      'width': 10,
+      'geodesic': true,
+      'clickable': true  // clickable = false in default
     });
 
     polyline.on(GoogleMapsEvent.POLYLINE_CLICK).subscribe((params: any) => {
-      let position: LatLng = <LatLng>params[0];
+      const position: LatLng = <LatLng>params[0];
 
-      let marker: Marker = this.map.addMarkerSync({
+      const marker: Marker = this.map.addMarkerSync({
         position: position,
         title: position.toUrlValue(),
         disableAutoPan: true

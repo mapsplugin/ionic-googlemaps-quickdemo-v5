@@ -102,7 +102,7 @@ export class ElevationPage implements OnInit, OnDestroy {
 
 
       this.lineChart = new Chart(this.lineCanvas.nativeElement, {
-          type: 'line',
+          type: 'bar',
           data: {
               labels: labels,
               datasets: [

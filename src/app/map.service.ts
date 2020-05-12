@@ -29,7 +29,9 @@ export class MapService {
       // await (new Promise((resolve) => {
       //   setTimeout(resolve, 100); // for secure.
       // }));
-      await this.map.setOptions(options);
+      if (options) {
+        await this.map.setOptions(options);
+      }
     } else {
       await this.platform.ready();
       await this._loadMap(divId, options);
