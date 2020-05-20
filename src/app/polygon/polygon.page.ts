@@ -46,11 +46,11 @@ export class PolygonPage implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.mapService.detachMap();
   }
-  
+
   async loadMap() {
     this.map = await this.mapService.attachMap('map_canvas', {
-      camera: {
-        target: this.GORYOKAKU_POINTS
+      'camera': {
+        'target': this.GORYOKAKU_POINTS
       },
       'gestures': {
         'scroll': false,
@@ -72,7 +72,8 @@ export class PolygonPage implements OnInit, OnDestroy {
     points.forEach((latLng: ILatLng, idx: number) => {
       let marker: Marker = this.map.addMarkerSync({
         draggable: true,
-        position: latLng
+        position: latLng,
+        disableAutoPan: false
       });
       marker.on(GoogleMapsEvent.MARKER_DRAG).subscribe((params) => {
         let position: LatLng = params[0];

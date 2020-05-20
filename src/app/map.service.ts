@@ -26,9 +26,9 @@ export class MapService {
         }, 100);
       }));
       await this.map.setDiv(divId);
-      // await (new Promise((resolve) => {
-      //   setTimeout(resolve, 100); // for secure.
-      // }));
+      await new Promise((resolve) => {
+        setTimeout(resolve, 100);
+      });
       if (options) {
         await this.map.setOptions(options);
       }
@@ -56,6 +56,9 @@ export class MapService {
   }
 
   detachMap() {
+    if (!this.map) return;
+    this.map.setDiv();
+    this.map.off();
     this.map.setOptions({
       'mapType': MapTypeId.NORMAL,
       'camera': {
@@ -75,15 +78,12 @@ export class MapService {
         'zoom': true
       },
       'preferences': {
-        'zoom': {
-          'minZoom': 0,
-          'maxZoom': 23
-        },
-        'building': false,
-        'gestureBounds': null
+        'zoom': null,  // reset min,max zoom
+        'building': true,
+        'clickableIcons': false,  // POI icons clickable = false
+        'restriction': null  // reset restriction
       }
     });
     this.map.clear();
-    this.map.setDiv();
   }
 }

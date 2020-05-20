@@ -5,7 +5,8 @@ import {
   GoogleMapsEvent,
   Marker,
   HtmlInfoWindow,
-  Environment
+  Environment,
+  MapTypeId
 } from '@ionic-native/google-maps';
 import { MapService } from '../map.service';
 
@@ -30,20 +31,11 @@ export class HtmlInfoWindowPage implements OnInit, OnDestroy {
 
   async loadMap() {
     this.map = await this.mapService.attachMap('map_canvas', {
-      camera: {
-        target: {lat: 35.685208, lng: -121.168225},
-        zoom: 19,
-        tilt: 45
-      },
-      'gestures': {
-        // 'scroll': false,
-        // 'tilt': false,
-        // 'rotate': false,
-        // 'zoom': false
-        'scroll': true,
-        'tilt': true,
-        'rotate': true,
-        'zoom': true
+      'mapType': MapTypeId.HYBRID,
+      'camera': {
+        'target': {lat: 35.685208, lng: -121.168225},
+        'zoom': 17,
+        'tilt': 45
       }
     });
 
@@ -165,18 +157,17 @@ export class HtmlInfoWindowPage implements OnInit, OnDestroy {
       width: "170px"
     });
 
-    this.map.addMarker({
+    const marker: Marker = this.map.addMarkerSync({
       position: {lat: 35.685208, lng: -121.168225},
       draggable: true,
       disableAutoPan: true
-    }).then((marker: Marker) => {
-
-      marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
-          htmlInfoWindow.open(marker);
-      });
-      marker.trigger(GoogleMapsEvent.MARKER_CLICK);
-
     });
+
+    marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
+        htmlInfoWindow.open(marker);
+    });
+    
+    marker.trigger(GoogleMapsEvent.MARKER_CLICK);
 
 
   }
