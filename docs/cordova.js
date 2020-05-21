@@ -1592,4 +1592,3 @@ window.cordova = require('cordova');
 require('cordova/init');
 
 })();
-;

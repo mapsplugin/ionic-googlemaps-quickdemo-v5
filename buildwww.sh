@@ -9,7 +9,7 @@ fi
 
 GOOGLE_MAPS_JS_API_KEY=$(echo "${GOOGLE_MAPS_JS_API_KEY//[$'\t\r\n ']}")|tr -d '\n'
 rm -rf www/ docs/
-ionic cordova build browser
+ionic cordova build browser --prod --release
 # cp platforms/browser/config.xml www/
 mv www docs
 pushd docs

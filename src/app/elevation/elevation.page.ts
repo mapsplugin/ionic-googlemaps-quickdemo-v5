@@ -19,8 +19,6 @@ import { MapService } from '../map.service';
   styleUrls: ['./elevation.page.scss'],
 })
 export class ElevationPage implements OnInit, OnDestroy {
-  title: string = "Get elevation along with path";
-  description: string = "This example creates a map that's on Google Headquarter, USA";
   lineChart: any;
   @ViewChild('lineCanvas', {static: true}) lineCanvas;
   map: GoogleMap;

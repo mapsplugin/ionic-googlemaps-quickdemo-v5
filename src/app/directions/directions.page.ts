@@ -23,8 +23,6 @@ import { MapService } from '../map.service';
   styleUrls: ['./directions.page.scss'],
 })
 export class DirectionsPage implements OnInit, OnDestroy {
-  public title: string = 'Directions';
-  public description: string = 'directions';
 
   map: GoogleMap;
   data: any;
