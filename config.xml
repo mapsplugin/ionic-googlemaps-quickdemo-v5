@@ -106,4 +106,6 @@
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
     <preference name="GOOGLE_MAPS_ANDROID_API_KEY" value="AIzaSyBzTWTKaMEeABaeBSa3_E6ZMxseK4xXl4k" />
     <preference name="GOOGLE_MAPS_IOS_API_KEY" value="AIzaSyBzTWTKaMEeABaeBSa3_E6ZMxseK4xXl4k" />
+    <preference name="GOOGLE_MAPS_BROWSER_API_KEY" value="AIzaSyBzTWTKaMEeABaeBSa3_E6ZMxseK4xXl4k" />
+    <allow-navigation href="http://localhost:8100" sessionid="2b5f7103" />
 </widget>

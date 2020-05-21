@@ -73,7 +73,7 @@ export class PolygonPage implements OnInit, OnDestroy {
       let marker: Marker = this.map.addMarkerSync({
         draggable: true,
         position: latLng,
-        disableAutoPan: false
+        disableAutoPan: true
       });
       marker.on(GoogleMapsEvent.MARKER_DRAG).subscribe((params) => {
         let position: LatLng = params[0];

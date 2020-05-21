@@ -6,7 +6,8 @@ import {
   Marker,
   HtmlInfoWindow,
   Environment,
-  MapTypeId
+  MapTypeId,
+  GoogleMapsAnimation
 } from '@ionic-native/google-maps';
 import { MapService } from '../map.service';
 
@@ -154,19 +155,21 @@ export class HtmlInfoWindowPage implements OnInit, OnDestroy {
       }
     });
     htmlInfoWindow.setContent(frame, {
-      width: "170px"
+      'width': '170px',
+      'background-color': 'red'
     });
 
     const marker: Marker = this.map.addMarkerSync({
-      position: {lat: 35.685208, lng: -121.168225},
-      draggable: true,
-      disableAutoPan: true
+      'position': {lat: 35.685208, lng: -121.168225},
+      'draggable': true,
+      'disableAutoPan': true,
+      'animation': GoogleMapsAnimation.DROP
     });
 
     marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
         htmlInfoWindow.open(marker);
     });
-    
+
     marker.trigger(GoogleMapsEvent.MARKER_CLICK);
 
 

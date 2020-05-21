@@ -76,7 +76,7 @@ export class CirclePage implements OnInit, OnDestroy {
 
 
     let marker: Marker = this.map.addMarkerSync({
-      position: positions[0],
+      position: Spherical.computeOffset(center, 150, 0),
       draggable: true,
       title: 'Drag me!',
       disableAutoPan: true
@@ -85,7 +85,7 @@ export class CirclePage implements OnInit, OnDestroy {
 
     let circle: Circle = this.map.addCircleSync({
       'center': center,
-      'radius': radius,
+      'radius': 150,
       'strokeColor' : '#AA00FF',
       'strokeWidth': 5,
       'fillColor' : '#00880055'

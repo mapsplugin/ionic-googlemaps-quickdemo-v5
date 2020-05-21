@@ -44,14 +44,6 @@ export class BasicsPage implements OnInit, OnDestroy {
 
   async loadMap() {
     this.map = await this.mapService.attachMap('map_canvas', {
-      'camera': {
-        'target': {
-          'lat': 43.0741704,
-          'lng': -89.3809802
-        },
-        'zoom': 18,
-        'tilt': 30
-      },
       'preferences': {
         'building': false,
         'clickableIcons': true
