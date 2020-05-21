@@ -180,8 +180,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.loadingCtrl = loadingCtrl;
         this.toastCtrl = toastCtrl;
         this.mapService = mapService;
-        this.title = 'Hello';
-        this.description = 'world';
       }
 
       _createClass(BasicsPage, [{

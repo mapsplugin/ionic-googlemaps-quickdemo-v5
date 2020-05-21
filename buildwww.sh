@@ -15,4 +15,4 @@ mv www docs
 pushd docs
 ln -s index.html 404.html
 popd
-grep -rl '(YOUR_API_KEY_IS_HERE)' ./docs/ | xargs sed -i '' 's/(YOUR_API_KEY_IS_HERE)/${GOOGLE_MAPS_JS_API_KEY}/g'
+grep -rl '(YOUR_API_KEY_IS_HERE)' ./docs/ | xargs sed -i '' "s/(YOUR_API_KEY_IS_HERE)/${GOOGLE_MAPS_JS_API_KEY}/g"

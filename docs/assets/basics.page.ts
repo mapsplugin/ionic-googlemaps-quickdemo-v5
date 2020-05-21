@@ -30,7 +30,7 @@ export class BasicsPage implements OnInit {
     this.platform.ready().then(() => {
 
       Environment.setEnv({
-        'API_KEY_FOR_BROWSER_RELEASE': '${GOOGLE_MAPS_JS_API_KEY}',
+        'API_KEY_FOR_BROWSER_RELEASE': 'AIzaSyBzTWTKaMEeABaeBSa3_E6ZMxseK4xXl4k',
         'API_KEY_FOR_BROWSER_DEBUG': 'AIzaSyBzTWTKaMEeABaeBSa3_E6ZMxseK4xXl4k'  // optional
       });
 

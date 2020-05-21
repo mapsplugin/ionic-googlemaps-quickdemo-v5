@@ -281,7 +281,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
     var _ionic_native_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
     /*! @ionic-native/core */
-    "../ionic-native-google-maps/node_modules/@ionic-native/core/index.js");
+    "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/index.js");
     /* harmony import */
 
 
@@ -3672,15 +3672,15 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
   },
 
   /***/
-  "../ionic-native-google-maps/node_modules/@ionic-native/core/bootstrap.js":
-  /*!********************************************************************************!*\
-    !*** ../ionic-native-google-maps/node_modules/@ionic-native/core/bootstrap.js ***!
-    \********************************************************************************/
+  "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/bootstrap.js":
+  /*!***********************************************************************************************************************!*\
+    !*** ../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/bootstrap.js ***!
+    \***********************************************************************************************************************/
 
   /*! exports provided: checkReady */
 
   /***/
-  function ionicNativeGoogleMapsNode_modulesIonicNativeCoreBootstrapJs(module, __webpack_exports__, __webpack_require__) {
+  function ionicNativeGoogleMapsDistIonicNativePluginsGoogleMapsNode_modulesIonicNativeCoreBootstrapJs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
@@ -3718,15 +3718,15 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
   },
 
   /***/
-  "../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/common.js":
-  /*!****************************************************************************************!*\
-    !*** ../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/common.js ***!
-    \****************************************************************************************/
+  "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/common.js":
+  /*!*******************************************************************************************************************************!*\
+    !*** ../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/common.js ***!
+    \*******************************************************************************************************************************/
 
   /*! exports provided: ERR_CORDOVA_NOT_AVAILABLE, ERR_PLUGIN_NOT_INSTALLED, getPromise, wrapPromise, checkAvailability, instanceAvailability, setIndex, callCordovaPlugin, callInstance, getPlugin, get, pluginWarn, cordovaWarn, wrap, wrapInstance */
 
   /***/
-  function ionicNativeGoogleMapsNode_modulesIonicNativeCoreDecoratorsCommonJs(module, __webpack_exports__, __webpack_require__) {
+  function ionicNativeGoogleMapsDistIonicNativePluginsGoogleMapsNode_modulesIonicNativeCoreDecoratorsCommonJs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
@@ -4341,15 +4341,15 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
   },
 
   /***/
-  "../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/cordova-function-override.js":
-  /*!***********************************************************************************************************!*\
-    !*** ../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/cordova-function-override.js ***!
-    \***********************************************************************************************************/
+  "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/cordova-function-override.js":
+  /*!**************************************************************************************************************************************************!*\
+    !*** ../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/cordova-function-override.js ***!
+    \**************************************************************************************************************************************************/
 
   /*! exports provided: cordovaFunctionOverride */
 
   /***/
-  function ionicNativeGoogleMapsNode_modulesIonicNativeCoreDecoratorsCordovaFunctionOverrideJs(module, __webpack_exports__, __webpack_require__) {
+  function ionicNativeGoogleMapsDistIonicNativePluginsGoogleMapsNode_modulesIonicNativeCoreDecoratorsCordovaFunctionOverrideJs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
@@ -4370,7 +4370,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
     var _common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
     /*! ./common */
-    "../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/common.js");
+    "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/common.js");
 
     function overrideFunction(pluginObj, methodName) {
       return new rxjs__WEBPACK_IMPORTED_MODULE_0__["Observable"](function (observer) {
@@ -4402,15 +4402,15 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
   },
 
   /***/
-  "../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/cordova-instance.js":
-  /*!**************************************************************************************************!*\
-    !*** ../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/cordova-instance.js ***!
-    \**************************************************************************************************/
+  "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/cordova-instance.js":
+  /*!*****************************************************************************************************************************************!*\
+    !*** ../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/cordova-instance.js ***!
+    \*****************************************************************************************************************************************/
 
   /*! exports provided: cordovaInstance */
 
   /***/
-  function ionicNativeGoogleMapsNode_modulesIonicNativeCoreDecoratorsCordovaInstanceJs(module, __webpack_exports__, __webpack_require__) {
+  function ionicNativeGoogleMapsDistIonicNativePluginsGoogleMapsNode_modulesIonicNativeCoreDecoratorsCordovaInstanceJs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
@@ -4425,7 +4425,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
     var _common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
     /*! ./common */
-    "../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/common.js");
+    "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/common.js");
 
     function cordovaInstance(pluginObj, methodName, config, args) {
       args = Array.from(args);
@@ -4437,15 +4437,15 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
   },
 
   /***/
-  "../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/cordova-property.js":
-  /*!**************************************************************************************************!*\
-    !*** ../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/cordova-property.js ***!
-    \**************************************************************************************************/
+  "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/cordova-property.js":
+  /*!*****************************************************************************************************************************************!*\
+    !*** ../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/cordova-property.js ***!
+    \*****************************************************************************************************************************************/
 
   /*! exports provided: cordovaPropertyGet, cordovaPropertySet */
 
   /***/
-  function ionicNativeGoogleMapsNode_modulesIonicNativeCoreDecoratorsCordovaPropertyJs(module, __webpack_exports__, __webpack_require__) {
+  function ionicNativeGoogleMapsDistIonicNativePluginsGoogleMapsNode_modulesIonicNativeCoreDecoratorsCordovaPropertyJs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
@@ -4466,7 +4466,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
     var _common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
     /*! ./common */
-    "../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/common.js");
+    "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/common.js");
 
     function cordovaPropertyGet(pluginObj, key) {
       if (Object(_common__WEBPACK_IMPORTED_MODULE_0__["checkAvailability"])(pluginObj, key) === true) {
@@ -4487,15 +4487,15 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
   },
 
   /***/
-  "../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/cordova.js":
-  /*!*****************************************************************************************!*\
-    !*** ../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/cordova.js ***!
-    \*****************************************************************************************/
+  "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/cordova.js":
+  /*!********************************************************************************************************************************!*\
+    !*** ../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/cordova.js ***!
+    \********************************************************************************************************************************/
 
   /*! exports provided: cordova */
 
   /***/
-  function ionicNativeGoogleMapsNode_modulesIonicNativeCoreDecoratorsCordovaJs(module, __webpack_exports__, __webpack_require__) {
+  function ionicNativeGoogleMapsDistIonicNativePluginsGoogleMapsNode_modulesIonicNativeCoreDecoratorsCordovaJs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
@@ -4510,7 +4510,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
     var _common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
     /*! ./common */
-    "../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/common.js");
+    "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/common.js");
 
     function cordova(pluginObj, methodName, config, args) {
       return Object(_common__WEBPACK_IMPORTED_MODULE_0__["wrap"])(pluginObj, methodName, config).apply(this, args);
@@ -4521,15 +4521,15 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
   },
 
   /***/
-  "../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/instance-property.js":
-  /*!***************************************************************************************************!*\
-    !*** ../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/instance-property.js ***!
-    \***************************************************************************************************/
+  "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/instance-property.js":
+  /*!******************************************************************************************************************************************!*\
+    !*** ../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/instance-property.js ***!
+    \******************************************************************************************************************************************/
 
   /*! exports provided: instancePropertyGet, instancePropertySet */
 
   /***/
-  function ionicNativeGoogleMapsNode_modulesIonicNativeCoreDecoratorsInstancePropertyJs(module, __webpack_exports__, __webpack_require__) {
+  function ionicNativeGoogleMapsDistIonicNativePluginsGoogleMapsNode_modulesIonicNativeCoreDecoratorsInstancePropertyJs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
@@ -4565,29 +4565,29 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
   },
 
   /***/
-  "../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/interfaces.js":
-  /*!********************************************************************************************!*\
-    !*** ../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/interfaces.js ***!
-    \********************************************************************************************/
+  "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/interfaces.js":
+  /*!***********************************************************************************************************************************!*\
+    !*** ../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/interfaces.js ***!
+    \***********************************************************************************************************************************/
 
   /*! no static exports found */
 
   /***/
-  function ionicNativeGoogleMapsNode_modulesIonicNativeCoreDecoratorsInterfacesJs(module, exports) {//# sourceMappingURL=interfaces.js.map
+  function ionicNativeGoogleMapsDistIonicNativePluginsGoogleMapsNode_modulesIonicNativeCoreDecoratorsInterfacesJs(module, exports) {//# sourceMappingURL=interfaces.js.map
 
     /***/
   },
 
   /***/
-  "../ionic-native-google-maps/node_modules/@ionic-native/core/index.js":
-  /*!****************************************************************************!*\
-    !*** ../ionic-native-google-maps/node_modules/@ionic-native/core/index.js ***!
-    \****************************************************************************/
+  "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/index.js":
+  /*!*******************************************************************************************************************!*\
+    !*** ../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/index.js ***!
+    \*******************************************************************************************************************/
 
   /*! no static exports found */
 
   /***/
-  function ionicNativeGoogleMapsNode_modulesIonicNativeCoreIndexJs(module, __webpack_exports__, __webpack_require__) {
+  function ionicNativeGoogleMapsDistIonicNativePluginsGoogleMapsNode_modulesIonicNativeCoreIndexJs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
@@ -4596,13 +4596,13 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
     var _bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
     /*! ./bootstrap */
-    "../ionic-native-google-maps/node_modules/@ionic-native/core/bootstrap.js");
+    "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/bootstrap.js");
     /* harmony import */
 
 
     var _ionic_native_plugin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
     /*! ./ionic-native-plugin */
-    "../ionic-native-google-maps/node_modules/@ionic-native/core/ionic-native-plugin.js");
+    "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/ionic-native-plugin.js");
     /* harmony reexport (safe) */
 
 
@@ -4614,7 +4614,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
     var _decorators_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
     /*! ./decorators/common */
-    "../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/common.js");
+    "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/common.js");
     /* harmony reexport (safe) */
 
 
@@ -4644,7 +4644,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
     var _decorators_cordova__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
     /*! ./decorators/cordova */
-    "../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/cordova.js");
+    "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/cordova.js");
     /* harmony reexport (safe) */
 
 
@@ -4656,7 +4656,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
     var _decorators_cordova_function_override__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
     /*! ./decorators/cordova-function-override */
-    "../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/cordova-function-override.js");
+    "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/cordova-function-override.js");
     /* harmony reexport (safe) */
 
 
@@ -4668,7 +4668,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
     var _decorators_cordova_instance__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
     /*! ./decorators/cordova-instance */
-    "../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/cordova-instance.js");
+    "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/cordova-instance.js");
     /* harmony reexport (safe) */
 
 
@@ -4680,7 +4680,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
     var _decorators_cordova_property__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
     /*! ./decorators/cordova-property */
-    "../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/cordova-property.js");
+    "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/cordova-property.js");
     /* harmony reexport (safe) */
 
 
@@ -4698,7 +4698,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
     var _decorators_instance_property__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
     /*! ./decorators/instance-property */
-    "../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/instance-property.js");
+    "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/instance-property.js");
     /* harmony reexport (safe) */
 
 
@@ -4716,7 +4716,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
     var _decorators_interfaces__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
     /*! ./decorators/interfaces */
-    "../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/interfaces.js");
+    "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/interfaces.js");
     /* harmony import */
 
 
@@ -4739,15 +4739,15 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
   },
 
   /***/
-  "../ionic-native-google-maps/node_modules/@ionic-native/core/ionic-native-plugin.js":
-  /*!******************************************************************************************!*\
-    !*** ../ionic-native-google-maps/node_modules/@ionic-native/core/ionic-native-plugin.js ***!
-    \******************************************************************************************/
+  "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/ionic-native-plugin.js":
+  /*!*********************************************************************************************************************************!*\
+    !*** ../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/ionic-native-plugin.js ***!
+    \*********************************************************************************************************************************/
 
   /*! exports provided: IonicNativePlugin */
 
   /***/
-  function ionicNativeGoogleMapsNode_modulesIonicNativeCoreIonicNativePluginJs(module, __webpack_exports__, __webpack_require__) {
+  function ionicNativeGoogleMapsDistIonicNativePluginsGoogleMapsNode_modulesIonicNativeCoreIonicNativePluginJs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
@@ -4762,13 +4762,13 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
     var _decorators_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
     /*! ./decorators/common */
-    "../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/common.js");
+    "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/common.js");
     /* harmony import */
 
 
     var _util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
     /*! ./util */
-    "../ionic-native-google-maps/node_modules/@ionic-native/core/util.js");
+    "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/util.js");
 
     var IonicNativePlugin =
     /** @class */
@@ -4847,15 +4847,15 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
   },
 
   /***/
-  "../ionic-native-google-maps/node_modules/@ionic-native/core/util.js":
-  /*!***************************************************************************!*\
-    !*** ../ionic-native-google-maps/node_modules/@ionic-native/core/util.js ***!
-    \***************************************************************************/
+  "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/util.js":
+  /*!******************************************************************************************************************!*\
+    !*** ../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/util.js ***!
+    \******************************************************************************************************************/
 
   /*! exports provided: get, getPromise */
 
   /***/
-  function ionicNativeGoogleMapsNode_modulesIonicNativeCoreUtilJs(module, __webpack_exports__, __webpack_require__) {
+  function ionicNativeGoogleMapsDistIonicNativePluginsGoogleMapsNode_modulesIonicNativeCoreUtilJs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
@@ -14228,7 +14228,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
           var _this40 = this;
 
           _ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_2__["Environment"].setEnv({
-            'API_KEY_FOR_BROWSER_RELEASE': '${GOOGLE_MAPS_JS_API_KEY}',
+            'API_KEY_FOR_BROWSER_RELEASE': 'AIzaSyBzTWTKaMEeABaeBSa3_E6ZMxseK4xXl4k',
             'API_KEY_FOR_BROWSER_DEBUG': 'AIzaSyBzTWTKaMEeABaeBSa3_E6ZMxseK4xXl4k' // optional
 
           });

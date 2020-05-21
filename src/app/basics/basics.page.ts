@@ -21,9 +21,6 @@ import { MapService } from '../map.service';
   styleUrls: ['./basics.page.scss'],
 })
 export class BasicsPage implements OnInit, OnDestroy {
-  public title: string = 'Hello';
-  public description: string = 'world';
-
   map: GoogleMap;
   loading: any;
 

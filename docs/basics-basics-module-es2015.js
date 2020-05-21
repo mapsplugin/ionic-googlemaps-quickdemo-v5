@@ -99,8 +99,6 @@ let BasicsPage = class BasicsPage {
         this.loadingCtrl = loadingCtrl;
         this.toastCtrl = toastCtrl;
         this.mapService = mapService;
-        this.title = 'Hello';
-        this.description = 'world';
     }
     ngOnInit() {
         this.loadMap();

@@ -47,7 +47,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TileOverlay", function() { return TileOverlay; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "KmlOverlay", function() { return KmlOverlay; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DirectionsRenderer", function() { return DirectionsRenderer; });
-/* harmony import */ var _ionic_native_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ionic-native/core */ "../ionic-native-google-maps/node_modules/@ionic-native/core/index.js");
+/* harmony import */ var _ionic_native_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ionic-native/core */ "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/index.js");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "../ionic-native-google-maps/node_modules/rxjs/_esm2015/index.js");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -2094,10 +2094,10 @@ var DirectionsRenderer = /** @class */ (function (_super) {
 
 /***/ }),
 
-/***/ "../ionic-native-google-maps/node_modules/@ionic-native/core/bootstrap.js":
-/*!********************************************************************************!*\
-  !*** ../ionic-native-google-maps/node_modules/@ionic-native/core/bootstrap.js ***!
-  \********************************************************************************/
+/***/ "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/bootstrap.js":
+/*!***********************************************************************************************************************!*\
+  !*** ../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/bootstrap.js ***!
+  \***********************************************************************************************************************/
 /*! exports provided: checkReady */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2129,10 +2129,10 @@ function checkReady() {
 
 /***/ }),
 
-/***/ "../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/common.js":
-/*!****************************************************************************************!*\
-  !*** ../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/common.js ***!
-  \****************************************************************************************/
+/***/ "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/common.js":
+/*!*******************************************************************************************************************************!*\
+  !*** ../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/common.js ***!
+  \*******************************************************************************************************************************/
 /*! exports provided: ERR_CORDOVA_NOT_AVAILABLE, ERR_PLUGIN_NOT_INSTALLED, getPromise, wrapPromise, checkAvailability, instanceAvailability, setIndex, callCordovaPlugin, callInstance, getPlugin, get, pluginWarn, cordovaWarn, wrap, wrapInstance */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2170,9 +2170,7 @@ function getPromise(callback) {
     };
     if (typeof window !== 'undefined' && window.angular) {
         var doc = window.document;
-        var injector = window.angular
-            .element(doc.querySelector('[ng-app]') || doc.body)
-            .injector();
+        var injector = window.angular.element(doc.querySelector('[ng-app]') || doc.body).injector();
         if (injector) {
             var $q = injector.get('$q');
             return $q(function (resolve, reject) {
@@ -2283,7 +2281,10 @@ function wrapObservable(pluginObj, methodName, args, opts) {
  * @returns {Observable}
  */
 function wrapEventObservable(event, element) {
-    element = (typeof window !== 'undefined' && element) ? get(window, element) : element || (typeof window !== 'undefined' ? window : {});
+    element =
+        typeof window !== 'undefined' && element
+            ? get(window, element)
+            : element || (typeof window !== 'undefined' ? window : {});
     return Object(rxjs__WEBPACK_IMPORTED_MODULE_0__["fromEvent"])(element, event);
 }
 function checkAvailability(plugin, methodName, pluginName) {
@@ -2312,8 +2313,7 @@ function checkAvailability(plugin, methodName, pluginName) {
  * @private
  */
 function instanceAvailability(pluginObj, methodName) {
-    return (pluginObj._objectInstance &&
-        (!methodName || typeof pluginObj._objectInstance[methodName] !== 'undefined'));
+    return pluginObj._objectInstance && (!methodName || typeof pluginObj._objectInstance[methodName] !== 'undefined');
 }
 function setIndex(args, opts, resolve, reject) {
     if (opts === void 0) { opts = {}; }
@@ -2420,13 +2420,7 @@ function get(element, path) {
 }
 function pluginWarn(pluginName, plugin, method) {
     if (method) {
-        console.warn('Native: tried calling ' +
-            pluginName +
-            '.' +
-            method +
-            ', but the ' +
-            pluginName +
-            ' plugin is not installed.');
+        console.warn('Native: tried calling ' + pluginName + '.' + method + ', but the ' + pluginName + ' plugin is not installed.');
     }
     else {
         console.warn("Native: tried accessing the " + pluginName + " plugin but it's not installed.");
@@ -2602,10 +2596,10 @@ function wrapInstance(pluginObj, methodName, opts) {
 
 /***/ }),
 
-/***/ "../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/cordova-function-override.js":
-/*!***********************************************************************************************************!*\
-  !*** ../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/cordova-function-override.js ***!
-  \***********************************************************************************************************/
+/***/ "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/cordova-function-override.js":
+/*!**************************************************************************************************************************************************!*\
+  !*** ../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/cordova-function-override.js ***!
+  \**************************************************************************************************************************************************/
 /*! exports provided: cordovaFunctionOverride */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2613,7 +2607,7 @@ function wrapInstance(pluginObj, methodName, opts) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "cordovaFunctionOverride", function() { return cordovaFunctionOverride; });
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! rxjs */ "../ionic-native-google-maps/node_modules/rxjs/_esm2015/index.js");
-/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./common */ "../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/common.js");
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./common */ "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/common.js");
 
 
 function overrideFunction(pluginObj, methodName) {
@@ -2638,17 +2632,17 @@ function cordovaFunctionOverride(pluginObj, methodName, args) {
 
 /***/ }),
 
-/***/ "../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/cordova-instance.js":
-/*!**************************************************************************************************!*\
-  !*** ../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/cordova-instance.js ***!
-  \**************************************************************************************************/
+/***/ "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/cordova-instance.js":
+/*!*****************************************************************************************************************************************!*\
+  !*** ../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/cordova-instance.js ***!
+  \*****************************************************************************************************************************************/
 /*! exports provided: cordovaInstance */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "cordovaInstance", function() { return cordovaInstance; });
-/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common */ "../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/common.js");
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common */ "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/common.js");
 
 function cordovaInstance(pluginObj, methodName, config, args) {
     args = Array.from(args);
@@ -2658,10 +2652,10 @@ function cordovaInstance(pluginObj, methodName, config, args) {
 
 /***/ }),
 
-/***/ "../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/cordova-property.js":
-/*!**************************************************************************************************!*\
-  !*** ../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/cordova-property.js ***!
-  \**************************************************************************************************/
+/***/ "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/cordova-property.js":
+/*!*****************************************************************************************************************************************!*\
+  !*** ../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/cordova-property.js ***!
+  \*****************************************************************************************************************************************/
 /*! exports provided: cordovaPropertyGet, cordovaPropertySet */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2669,7 +2663,7 @@ function cordovaInstance(pluginObj, methodName, config, args) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "cordovaPropertyGet", function() { return cordovaPropertyGet; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "cordovaPropertySet", function() { return cordovaPropertySet; });
-/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common */ "../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/common.js");
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common */ "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/common.js");
 
 function cordovaPropertyGet(pluginObj, key) {
     if (Object(_common__WEBPACK_IMPORTED_MODULE_0__["checkAvailability"])(pluginObj, key) === true) {
@@ -2686,17 +2680,17 @@ function cordovaPropertySet(pluginObj, key, value) {
 
 /***/ }),
 
-/***/ "../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/cordova.js":
-/*!*****************************************************************************************!*\
-  !*** ../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/cordova.js ***!
-  \*****************************************************************************************/
+/***/ "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/cordova.js":
+/*!********************************************************************************************************************************!*\
+  !*** ../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/cordova.js ***!
+  \********************************************************************************************************************************/
 /*! exports provided: cordova */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "cordova", function() { return cordova; });
-/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common */ "../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/common.js");
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common */ "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/common.js");
 
 function cordova(pluginObj, methodName, config, args) {
     return Object(_common__WEBPACK_IMPORTED_MODULE_0__["wrap"])(pluginObj, methodName, config).apply(this, args);
@@ -2705,10 +2699,10 @@ function cordova(pluginObj, methodName, config, args) {
 
 /***/ }),
 
-/***/ "../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/instance-property.js":
-/*!***************************************************************************************************!*\
-  !*** ../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/instance-property.js ***!
-  \***************************************************************************************************/
+/***/ "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/instance-property.js":
+/*!******************************************************************************************************************************************!*\
+  !*** ../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/instance-property.js ***!
+  \******************************************************************************************************************************************/
 /*! exports provided: instancePropertyGet, instancePropertySet */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2731,10 +2725,10 @@ function instancePropertySet(pluginObj, key, value) {
 
 /***/ }),
 
-/***/ "../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/interfaces.js":
-/*!********************************************************************************************!*\
-  !*** ../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/interfaces.js ***!
-  \********************************************************************************************/
+/***/ "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/interfaces.js":
+/*!***********************************************************************************************************************************!*\
+  !*** ../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/interfaces.js ***!
+  \***********************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -2742,20 +2736,20 @@ function instancePropertySet(pluginObj, key, value) {
 
 /***/ }),
 
-/***/ "../ionic-native-google-maps/node_modules/@ionic-native/core/index.js":
-/*!****************************************************************************!*\
-  !*** ../ionic-native-google-maps/node_modules/@ionic-native/core/index.js ***!
-  \****************************************************************************/
+/***/ "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/index.js":
+/*!*******************************************************************************************************************!*\
+  !*** ../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/index.js ***!
+  \*******************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./bootstrap */ "../ionic-native-google-maps/node_modules/@ionic-native/core/bootstrap.js");
-/* harmony import */ var _ionic_native_plugin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ionic-native-plugin */ "../ionic-native-google-maps/node_modules/@ionic-native/core/ionic-native-plugin.js");
+/* harmony import */ var _bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./bootstrap */ "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/bootstrap.js");
+/* harmony import */ var _ionic_native_plugin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ionic-native-plugin */ "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/ionic-native-plugin.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "IonicNativePlugin", function() { return _ionic_native_plugin__WEBPACK_IMPORTED_MODULE_1__["IonicNativePlugin"]; });
 
-/* harmony import */ var _decorators_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./decorators/common */ "../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/common.js");
+/* harmony import */ var _decorators_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./decorators/common */ "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/common.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "checkAvailability", function() { return _decorators_common__WEBPACK_IMPORTED_MODULE_2__["checkAvailability"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "instanceAvailability", function() { return _decorators_common__WEBPACK_IMPORTED_MODULE_2__["instanceAvailability"]; });
@@ -2764,26 +2758,26 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getPromise", function() { return _decorators_common__WEBPACK_IMPORTED_MODULE_2__["getPromise"]; });
 
-/* harmony import */ var _decorators_cordova__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./decorators/cordova */ "../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/cordova.js");
+/* harmony import */ var _decorators_cordova__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./decorators/cordova */ "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/cordova.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "cordova", function() { return _decorators_cordova__WEBPACK_IMPORTED_MODULE_3__["cordova"]; });
 
-/* harmony import */ var _decorators_cordova_function_override__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./decorators/cordova-function-override */ "../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/cordova-function-override.js");
+/* harmony import */ var _decorators_cordova_function_override__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./decorators/cordova-function-override */ "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/cordova-function-override.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "cordovaFunctionOverride", function() { return _decorators_cordova_function_override__WEBPACK_IMPORTED_MODULE_4__["cordovaFunctionOverride"]; });
 
-/* harmony import */ var _decorators_cordova_instance__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./decorators/cordova-instance */ "../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/cordova-instance.js");
+/* harmony import */ var _decorators_cordova_instance__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./decorators/cordova-instance */ "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/cordova-instance.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "cordovaInstance", function() { return _decorators_cordova_instance__WEBPACK_IMPORTED_MODULE_5__["cordovaInstance"]; });
 
-/* harmony import */ var _decorators_cordova_property__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./decorators/cordova-property */ "../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/cordova-property.js");
+/* harmony import */ var _decorators_cordova_property__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./decorators/cordova-property */ "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/cordova-property.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "cordovaPropertyGet", function() { return _decorators_cordova_property__WEBPACK_IMPORTED_MODULE_6__["cordovaPropertyGet"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "cordovaPropertySet", function() { return _decorators_cordova_property__WEBPACK_IMPORTED_MODULE_6__["cordovaPropertySet"]; });
 
-/* harmony import */ var _decorators_instance_property__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./decorators/instance-property */ "../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/instance-property.js");
+/* harmony import */ var _decorators_instance_property__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./decorators/instance-property */ "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/instance-property.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "instancePropertyGet", function() { return _decorators_instance_property__WEBPACK_IMPORTED_MODULE_7__["instancePropertyGet"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "instancePropertySet", function() { return _decorators_instance_property__WEBPACK_IMPORTED_MODULE_7__["instancePropertySet"]; });
 
-/* harmony import */ var _decorators_interfaces__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./decorators/interfaces */ "../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/interfaces.js");
+/* harmony import */ var _decorators_interfaces__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./decorators/interfaces */ "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/interfaces.js");
 /* harmony import */ var _decorators_interfaces__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_decorators_interfaces__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _decorators_interfaces__WEBPACK_IMPORTED_MODULE_8__) if(["IonicNativePlugin","checkAvailability","instanceAvailability","wrap","getPromise","cordova","cordovaFunctionOverride","cordovaInstance","cordovaPropertyGet","cordovaPropertySet","instancePropertyGet","instancePropertySet","default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _decorators_interfaces__WEBPACK_IMPORTED_MODULE_8__[key]; }) }(__WEBPACK_IMPORT_KEY__));
 
@@ -2801,18 +2795,18 @@ Object(_bootstrap__WEBPACK_IMPORTED_MODULE_0__["checkReady"])();
 
 /***/ }),
 
-/***/ "../ionic-native-google-maps/node_modules/@ionic-native/core/ionic-native-plugin.js":
-/*!******************************************************************************************!*\
-  !*** ../ionic-native-google-maps/node_modules/@ionic-native/core/ionic-native-plugin.js ***!
-  \******************************************************************************************/
+/***/ "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/ionic-native-plugin.js":
+/*!*********************************************************************************************************************************!*\
+  !*** ../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/ionic-native-plugin.js ***!
+  \*********************************************************************************************************************************/
 /*! exports provided: IonicNativePlugin */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IonicNativePlugin", function() { return IonicNativePlugin; });
-/* harmony import */ var _decorators_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./decorators/common */ "../ionic-native-google-maps/node_modules/@ionic-native/core/decorators/common.js");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./util */ "../ionic-native-google-maps/node_modules/@ionic-native/core/util.js");
+/* harmony import */ var _decorators_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./decorators/common */ "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/decorators/common.js");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./util */ "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/util.js");
 
 
 var IonicNativePlugin = /** @class */ (function () {
@@ -2876,10 +2870,10 @@ var IonicNativePlugin = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "../ionic-native-google-maps/node_modules/@ionic-native/core/util.js":
-/*!***************************************************************************!*\
-  !*** ../ionic-native-google-maps/node_modules/@ionic-native/core/util.js ***!
-  \***************************************************************************/
+/***/ "../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/util.js":
+/*!******************************************************************************************************************!*\
+  !*** ../ionic-native-google-maps/dist/@ionic-native/plugins/google-maps/node_modules/@ionic-native/core/util.js ***!
+  \******************************************************************************************************************/
 /*! exports provided: get, getPromise */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -8118,7 +8112,7 @@ let MapService = class MapService {
     }
     _loadMap(divId, options) {
         _ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_2__["Environment"].setEnv({
-            'API_KEY_FOR_BROWSER_RELEASE': '${GOOGLE_MAPS_JS_API_KEY}',
+            'API_KEY_FOR_BROWSER_RELEASE': 'AIzaSyBzTWTKaMEeABaeBSa3_E6ZMxseK4xXl4k',
             'API_KEY_FOR_BROWSER_DEBUG': 'AIzaSyBzTWTKaMEeABaeBSa3_E6ZMxseK4xXl4k' // optional
         });
         let mapOptions = options || {};
