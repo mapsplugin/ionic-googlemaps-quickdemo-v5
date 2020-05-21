@@ -12,5 +12,7 @@ rm -rf www/ docs/
 ionic cordova build browser
 # cp platforms/browser/config.xml www/
 mv www docs
-ln -s docs/index.html docs/404.html
+pushd docs
+ln -s index.html 404.html
+popd
 grep -rl '(YOUR_API_KEY_IS_HERE)' ./docs/ | xargs sed -i '' 's/(YOUR_API_KEY_IS_HERE)/${GOOGLE_MAPS_JS_API_KEY}/g'
