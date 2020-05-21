@@ -10,7 +10,7 @@ fi
 GOOGLE_MAPS_JS_API_KEY=$(echo "${GOOGLE_MAPS_JS_API_KEY//[$'\t\r\n ']}")|tr -d '\n'
 rm -rf www/ docs/
 ionic cordova build browser
-ln -s www/index.html www/404.html
 # cp platforms/browser/config.xml www/
 mv www docs
+ln -s docs/index.html docs/404.html
 grep -rl '(YOUR_API_KEY_IS_HERE)' ./docs/ | xargs sed -i '' 's/(YOUR_API_KEY_IS_HERE)/${GOOGLE_MAPS_JS_API_KEY}/g'
