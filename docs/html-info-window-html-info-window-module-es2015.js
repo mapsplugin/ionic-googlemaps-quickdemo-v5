@@ -228,7 +228,7 @@ let HtmlInfoWindowPage = class HtmlInfoWindowPage {
             });
             htmlInfoWindow.setContent(frame, {
                 'width': '170px',
-                'backgroundColor': 'red'
+                'background-color': 'red'
             });
             const marker = this.map.addMarkerSync({
                 'position': { lat: 35.685208, lng: -121.168225 },

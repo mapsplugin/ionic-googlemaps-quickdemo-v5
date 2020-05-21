@@ -204,10 +204,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     return this.platform.ready();
 
                   case 2:
-                    // Environment.setEnv({
-                    //   'API_KEY_FOR_BROWSER_RELEASE': '${GOOGLE_MAPS_JS_API_KEY}',
-                    //   'API_KEY_FOR_BROWSER_DEBUG': 'AIzaSyBzTWTKaMEeABaeBSa3_E6ZMxseK4xXl4k'  // optional
-                    // });
                     center = {
                       "lat": 32,
                       "lng": -97
@@ -217,19 +213,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                     positions = [0, 90, 180, 270].map(function (degree) {
                       return _ionic_native_google_maps__WEBPACK_IMPORTED_MODULE_2__["Spherical"].computeOffset(center, radius, degree);
-                    }); // this.map = GoogleMaps.create('map_canvas', {
-                    //   'camera': {
-                    //     'target': positions,
-                    //     'padding': 100
-                    //   },
-                    //   'gestures': {
-                    //     'scroll': false,
-                    //     'tilt': false,
-                    //     'rotate': false,
-                    //     'zoom': false
-                    //   }
-                    // });
-
+                    });
                     _context.next = 7;
                     return this.mapService.attachMap('map_canvas', {
                       'camera': {

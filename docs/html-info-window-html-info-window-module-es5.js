@@ -232,7 +232,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     });
                     htmlInfoWindow.setContent(frame, {
                       'width': '170px',
-                      'backgroundColor': 'red'
+                      'background-color': 'red'
                     });
                     marker = this.map.addMarkerSync({
                       'position': {

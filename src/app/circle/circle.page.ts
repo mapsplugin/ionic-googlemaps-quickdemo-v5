@@ -36,10 +36,6 @@ export class CirclePage implements OnInit, OnDestroy {
 
   async loadMap() {
     await this.platform.ready();
-    // Environment.setEnv({
-    //   'API_KEY_FOR_BROWSER_RELEASE': '(YOUR_API_KEY_IS_HERE)',
-    //   'API_KEY_FOR_BROWSER_DEBUG': 'AIzaSyBzTWTKaMEeABaeBSa3_E6ZMxseK4xXl4k'  // optional
-    // });
     let center: ILatLng = {"lat": 32, "lng": -97};
 
     let radius = 300;  // radius (meter)
@@ -49,18 +45,6 @@ export class CirclePage implements OnInit, OnDestroy {
       return Spherical.computeOffset(center, radius, degree);
     });
 
-    // this.map = GoogleMaps.create('map_canvas', {
-    //   'camera': {
-    //     'target': positions,
-    //     'padding': 100
-    //   },
-    //   'gestures': {
-    //     'scroll': false,
-    //     'tilt': false,
-    //     'rotate': false,
-    //     'zoom': false
-    //   }
-    // });
     this.map = await this.mapService.attachMap('map_canvas', {
       'camera': {
         'target': positions,

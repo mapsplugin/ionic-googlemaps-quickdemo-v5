@@ -2276,12 +2276,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                       'camera': {
                         'target': [this.origin, this.destination]
                       },
-                      // 'gestures': {
-                      //   'scroll': false,
-                      //   'tilt': false,
-                      //   'rotate': false,
-                      //   'zoom': false
-                      // },
+                      'gestures': {
+                        'scroll': false,
+                        'tilt': false,
+                        'rotate': false,
+                        'zoom': false
+                      },
                       'controls': {
                         'zoom': false
                       },
