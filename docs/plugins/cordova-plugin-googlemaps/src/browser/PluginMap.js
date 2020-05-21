@@ -1,4 +1,4 @@
-cordova.define("cordova-plugin-googlemaps.PluginMap", function(require, exports, module) { 
+cordova.define("cordova-plugin-googlemaps.PluginMap", function(require, exports, module) {
 
 var utils = require('cordova/utils'),
   event = require('cordova-plugin-googlemaps.event'),
@@ -234,7 +234,7 @@ function PluginMap(mapId, options) {
             options.camera.target.forEach(function(pos) {
               bounds.extend(pos);
             });
-            map.fitBounds(bounds, 5);
+            map.fitBounds(bounds, 'padding' in options.camera ? options.camera.padding || 0 : 5);
           } else {
             map.setCenter(options.camera.target);
           }

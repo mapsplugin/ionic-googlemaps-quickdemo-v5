@@ -42,7 +42,8 @@ export class GroundOverlayPage implements OnInit, OnDestroy {
 
     this.map = await this.mapService.attachMap('map_canvas', {
       camera: {
-        target: bounds
+        'target': bounds,
+        'padding': 30
       },
       'gestures': {
         'scroll': false,

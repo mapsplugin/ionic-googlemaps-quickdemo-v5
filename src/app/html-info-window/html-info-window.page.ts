@@ -155,8 +155,7 @@ export class HtmlInfoWindowPage implements OnInit, OnDestroy {
       }
     });
     htmlInfoWindow.setContent(frame, {
-      'width': '170px',
-      'background-color': 'red'
+      'width': '170px'
     });
 
     const marker: Marker = this.map.addMarkerSync({
