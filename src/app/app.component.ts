@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Platform } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 @Component({
@@ -14,80 +13,64 @@ export class AppComponent implements OnInit {
   public appPages = [
     {
       title: 'SimpleMap',
-      url: 'basics',
-      icon: 'map'
-    },
-    {
-      title: 'Elevation',
-      url: 'elevation',
-      icon: 'trending-up'
+      url: 'basics'
     },
     {
       title: 'Marker',
-      url: 'marker',
-      icon: 'pin'
+      url: 'marker'
     },
     {
       title: 'MarkerCluster',
-      url: 'marker-cluster',
-      icon: 'pin'
+      url: 'marker-cluster'
     },
     {
       title: 'HtmlInfoWindow',
-      url: 'html-info-window',
-      icon: 'pin'
+      url: 'html-info-window'
     },
     {
       title: 'Circle',
-      url: 'circle',
-      icon: 'pin'
+      url: 'circle'
     },
     {
       title: 'Polyline',
-      url: 'polyline',
-      icon: 'pin'
+      url: 'polyline'
     },
     {
       title: 'Polygon',
-      url: 'polygon',
-      icon: 'pin'
+      url: 'polygon'
     },
     {
       title: 'GroundOverlay',
-      url: 'ground-overlay',
-      icon: 'pin'
+      url: 'ground-overlay'
     },
     {
       title: 'Geocoding',
-      url: 'geocoding',
-      icon: 'pin'
+      url: 'geocoding'
     },
     {
       title: 'TileOverlay',
-      url: 'tile-overlay',
-      icon: 'pin'
+      url: 'tile-overlay'
     },
     {
       title: 'KmlOverlay',
-      url: 'kml-overlay',
-      icon: 'pin'
+      url: 'kml-overlay'
     },
     {
       title: 'StreetView',
-      url: 'street-view',
-      icon: 'pin'
+      url: 'street-view'
+    },
+    {
+      title: 'Elevation',
+      url: 'elevation'
     },
     {
       title: 'Directions',
-      url: 'directions',
-      icon: 'car'
+      url: 'directions'
     }
   ];
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 
   constructor(
     private platform: Platform,
-    private splashScreen: SplashScreen,
     private statusBar: StatusBar
   ) {
     this.initializeApp();
@@ -96,7 +79,6 @@ export class AppComponent implements OnInit {
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
-      this.splashScreen.hide();
     });
   }
 
