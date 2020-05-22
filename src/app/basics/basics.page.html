@@ -3,7 +3,12 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Basic Map</ion-title>
+    <ion-title>
+      Basic Map
+      <ion-label end>
+        <a class="sourcecode" href="https://github.com/mapsplugin/ionic-googlemaps-quickdemo-v5/blob/master/src/app/basics/basics.page.ts" target="_blank">[source code]</a>
+      </ion-label>
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,11 +16,11 @@
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Basic Map</ion-title>
+
     </ion-toolbar>
   </ion-header>
 
   <div id="container">
-    <a class="sourcecode" href="https://github.com/mapsplugin/ionic-googlemaps-quickdemo-v5/blob/master/src/app/basics/basics.page.ts" target="_blank">[source code]</a>
     <p>Welcome to the @ionic-native/GoogleMaps plugin demo!</p>
     <div id="map_canvas">
       <ion-button ion-button (click)="onButtonClick()">Click here!</ion-button>

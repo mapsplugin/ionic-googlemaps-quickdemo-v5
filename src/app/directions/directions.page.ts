@@ -46,15 +46,6 @@ export class DirectionsPage implements OnInit, OnDestroy {
       'camera': {
         'target': [this.origin, this.destination]
       },
-      'gestures': {
-        'scroll': false,
-        'tilt': false,
-        'rotate': false,
-        'zoom': false
-      },
-      'controls': {
-        'zoom': false
-      },
       'preferences': {
         'restriction': {
           "southwest": {

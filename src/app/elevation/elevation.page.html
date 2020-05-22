@@ -3,7 +3,12 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Elevation Service</ion-title>
+    <ion-title>
+      Elevation Service
+      <ion-label end>
+        <a class="sourcecode" href="https://github.com/mapsplugin/ionic-googlemaps-quickdemo-v5/blob/master/src/app/elevation/elevation.page.ts" target="_blank">[source code]</a>
+      </ion-label>
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -15,7 +20,6 @@
   </ion-header>
 
   <div id="container">
-    <a class="sourcecode" href="https://github.com/mapsplugin/ionic-googlemaps-quickdemo-v5/blob/master/src/app/elevation/elevation.page.ts" target="_blank">[source code]</a>
     <p>Get elevation along with path</p>
     <div id="map_canvas"></div>
     <canvas #lineCanvas id='lineCanvas' height="100"></canvas>
