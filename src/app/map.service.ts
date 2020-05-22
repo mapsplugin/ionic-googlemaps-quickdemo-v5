@@ -30,6 +30,7 @@ export class MapService {
         setTimeout(resolve, 100);
       });
       if (options) {
+        options.mapType = options.mapType || MapTypeId.NORMAL;
         await this.map.setOptions(options);
       }
     } else {
@@ -60,7 +61,7 @@ export class MapService {
     this.map.setDiv();
     this.map.off();
     this.map.setOptions({
-      'mapType': MapTypeId.NORMAL,
+      'mapType': MapTypeId.NONE,
       'camera': {
         'target': {
           'lat': 0,

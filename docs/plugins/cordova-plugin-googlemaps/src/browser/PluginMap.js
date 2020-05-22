@@ -415,14 +415,16 @@ PluginMap.prototype.setDiv = function(onSuccess, onError, args) {
       });
       actualMapDiv.style.position = 'relative';
       actualMapDiv.insertBefore(container, actualMapDiv.firstElementChild);
-      container.style.width = '99%';
+
+      var offsetHeight = container.offsetHeight;
+      container.offsetHeight = offsetHeight - 1;
+      setTimeout(function() {
+        container.offsetHeight = offsetHeight;
+        google.maps.event.trigger(map, 'resize');
+      }, 1000);
     }
 
-    setTimeout(function() {
-      container.style.width = '100%';
-      google.maps.event.trigger(map, 'resize');
-      onSuccess();
-    }, 1000);
+    onSuccess();
   }
 
 };
