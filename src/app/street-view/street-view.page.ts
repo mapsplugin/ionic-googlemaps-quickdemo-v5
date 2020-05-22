@@ -38,29 +38,42 @@ export class StreetViewPage implements OnInit, OnDestroy {
   }
 
   async loadMap() {
-    await this.platform.ready();
 
     let initialPos: ILatLng = {lat: 42.345573, lng: -71.098326};
-
-    // Create a map after the view is loaded.
-    this.panorama = await GoogleMaps.createPanorama('pano_canvas', {
-      camera: {
-        target: initialPos
-      }
-    });
 
     // await (new Promise((resolve) => setTimeout(resolve, 100)));
 
     this.map = await this.mapService.attachMap('map_canvas', {
-      camera: {
-        target: initialPos,
-        zoom: 17
+      'camera': {
+        'target': initialPos,
+        'zoom': 17
+      },
+      'controls': {
+        'compass': false,
+        'indoorPicker': false,
+        'myLocationButton': false,
+        'myLocation': false,   // (blue dot)
+        'zoom': false,          // android only
+        'mapToolbar': false
+      },
+      'gestures': {
+        'scroll': true,
+        'tilt': false,
+        'rotate': false,
+        'zoom': false
+      }
+    });
+
+    // Create a map after the view is loaded.
+    this.panorama = await GoogleMaps.createPanorama('pano_canvas', {
+      'camera': {
+        'target': initialPos
       }
     });
 
     this.marker = this.map.addMarkerSync({
-      flat: true,
-      position: initialPos
+      'flat': true,
+      'position': initialPos
     });
 
     // Move the marker position when the panorama camera has been moved.

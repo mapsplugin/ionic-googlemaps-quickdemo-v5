@@ -60,7 +60,7 @@ function PluginMap(mapId, options) {
   container.style.bottom = 0;
   container.style.right = 0;
   container.style.left = 0;
-  actualMapDiv.appendChild(container);
+  actualMapDiv.insertBefore(container, actualMapDiv.firstElementChild);
 
   var shadowRoot = container.attachShadow({mode: 'open'});
 
@@ -390,6 +390,10 @@ PluginMap.prototype.setDiv = function(onSuccess, onError, args) {
     map = self.get('map'),
     container = self.get('container');
     // shadowRoot = self.get('shadowRoot');
+  if (!container) {
+    onError('[map.setDiv] container is undefined');
+    return;
+  }
 
   if (args.length === 0) {
     if (container.parentNode && container.parentNode.parentNode) {
@@ -398,7 +402,7 @@ PluginMap.prototype.setDiv = function(onSuccess, onError, args) {
     onSuccess();
   } else {
 
-    // if (!container.parentNode) {
+    if (container.parentNode && !container.parentNode.parentNode) {
       var domId = args[0];
       var eles = Array.from(document.querySelectorAll('*'));
       eles = eles.filter(function(e) {
@@ -410,9 +414,9 @@ PluginMap.prototype.setDiv = function(onSuccess, onError, args) {
         value: self.__pgmId
       });
       actualMapDiv.style.position = 'relative';
-      actualMapDiv.appendChild(container);
+      actualMapDiv.insertBefore(container, actualMapDiv.firstElementChild);
       container.style.width = '99%';
-    // }
+    }
 
     setTimeout(function() {
       container.style.width = '100%';

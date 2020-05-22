@@ -1,4 +1,4 @@
-cordova.define("cordova-plugin-googlemaps.js_CordovaGoogleMaps", function(require, exports, module) { 
+cordova.define("cordova-plugin-googlemaps.js_CordovaGoogleMaps", function(require, exports, module) {
 
 if (!window.Promise) {
   window.Promise = require('cordova-plugin-googlemaps.Promise');
@@ -29,8 +29,8 @@ function CordovaGoogleMaps(execCmd) {
   self.MAP_CNT = 0;
 
   var removeMapDiv = function(node) {
-    if (node.__pluginmapid !== undefined && !node.parentNode) {
-      var mapId = node.__pluginmapid;
+    if (node.__pluginMapId !== undefined && !node.parentNode) {
+      var mapId = node.__pluginMapId;
       var map = self.MAPS[mapId];
       if (map) {
         map.remove();
@@ -39,7 +39,7 @@ function CordovaGoogleMaps(execCmd) {
     } else {
       var childNodes = Array.prototype.slice.call(node.childNodes);
       childNodes.forEach(function(child) {
-        if (child && child.__pluginMapId) {
+        if (child.outerHTML && child.__pluginMapId) {
           removeMapDiv(child);
         }
         // if (child.outerHTML && child.outerHTML.indexOf('__pluginmapid') > -1) {
@@ -59,7 +59,7 @@ function CordovaGoogleMaps(execCmd) {
         if (record.removedNodes.length > 0) {
           record.removeNodes = Array.prototype.slice.call(record.removedNodes, 0);
           record.removeNodes.forEach(function(node) {
-            if (node && node.__pluginMapId) {
+            if (node.outerHTML && node.__pluginMapId) {
               removeMapDiv(node);
             }
             // if (node.outerHTML && node.outerHTML.indexOf('__pluginmapid') > -1) {

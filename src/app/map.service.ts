@@ -43,7 +43,7 @@ export class MapService {
 
     Environment.setEnv({
       'API_KEY_FOR_BROWSER_RELEASE': '(YOUR_API_KEY_IS_HERE)',
-      'API_KEY_FOR_BROWSER_DEBUG': 'AIzaSyBzTWTKaMEeABaeBSa3_E6ZMxseK4xXl4k'  // optional
+      'API_KEY_FOR_BROWSER_DEBUG': '(YOUR_API_KEY_IS_HERE)'  // optional
     });
 
     let mapOptions: GoogleMapOptions = options || {};
@@ -76,6 +76,14 @@ export class MapService {
         'tilt': true,
         'rotate': true,
         'zoom': true
+      },
+      'controls': {
+        'compass': true,
+        'indoorPicker': true,
+        'myLocationButton': true,
+        'myLocation': true,   // (blue dot)
+        'zoom': true,          // android only
+        'mapToolbar': true
       },
       'preferences': {
         'zoom': null,  // reset min,max zoom

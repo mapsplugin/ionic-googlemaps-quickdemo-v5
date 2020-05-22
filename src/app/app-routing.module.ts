@@ -70,7 +70,12 @@ const routes: Routes = [
   {
     path: 'elevation',
     loadChildren: () => import('./elevation/elevation.module').then( m => m.ElevationPageModule)
-  }
+  },
+  {
+    path: ':catchall_must_be_last',
+    redirectTo: 'basics',
+    pathMatch: 'full'
+  },
 ];
 
 @NgModule({
