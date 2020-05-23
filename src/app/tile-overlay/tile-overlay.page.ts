@@ -38,32 +38,28 @@ export class TileOverlayPage implements OnInit, OnDestroy {
       'mapType': MapTypeId.NONE,
       'camera': {
         'target': {
-          lat: 43.0741704,
-          lng: -89.3809802
+          lat: 0,
+          lng: 0
         },
-        'zoom': 2
+        'zoom': 3
       }
     });
 
-    await (new Promise((resolve) => {
+    [
+      "https://stamen-tiles.a.ssl.fastly.net/toner/{zoom}/{x}/{y}.png",
+      "https://stamen-tiles.a.ssl.fastly.net/watercolor/{zoom}/{x}/{y}.jpg"
+    ].forEach((layerUrl: string, idx: number) => {
 
-      [
-        "https://stamen-tiles.a.ssl.fastly.net/toner/{zoom}/{x}/{y}.png",
-        "https://stamen-tiles.a.ssl.fastly.net/watercolor/{zoom}/{x}/{y}.jpg"
-      ].forEach((layerUrl: string, idx: number) => {
-
-        const layer: TileOverlay = this.map.addTileOverlaySync({
-          zIndex: idx,
-          getTile: (x: number, y: number, zoom: number) => {
-            return layerUrl.replace("{zoom}", zoom + "")
-                      .replace("{x}", x + "")
-                      .replace("{y}", y + "");
-          }
-        });
-        this.layers.push(layer);
+      const layer: TileOverlay = this.map.addTileOverlaySync({
+        zIndex: idx,
+        getTile: (x: number, y: number, zoom: number) => {
+          return layerUrl.replace("{zoom}", zoom + "")
+                    .replace("{x}", x + "")
+                    .replace("{y}", y + "");
+        }
       });
-      resolve();
-    }));
+      this.layers.push(layer);
+    });
 
   }
 
