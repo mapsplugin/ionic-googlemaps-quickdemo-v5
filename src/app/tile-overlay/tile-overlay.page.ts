@@ -4,7 +4,8 @@ import {
   GoogleMap,
   GoogleMapsEvent,
   MapTypeId,
-  Environment
+  Environment,
+  TileOverlay
 } from '@ionic-native/google-maps';
 import { MapService } from '../map.service';
 
@@ -26,6 +27,9 @@ export class TileOverlayPage implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    this.layers.forEach((layer: TileOverlay) => {
+      layer.remove();
+    });
     this.mapService.detachMap();
   }
 
@@ -46,7 +50,7 @@ export class TileOverlayPage implements OnInit, OnDestroy {
       "https://stamen-tiles.a.ssl.fastly.net/watercolor/{zoom}/{x}/{y}.jpg"
     ].forEach((layerUrl: string, idx: number) => {
 
-      let layer = this.map.addTileOverlaySync({
+      const layer: TileOverlay = this.map.addTileOverlaySync({
         zIndex: idx,
         getTile: (x: number, y: number, zoom: number) => {
           return layerUrl.replace("{zoom}", zoom + "")
