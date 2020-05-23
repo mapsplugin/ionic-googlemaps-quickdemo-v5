@@ -34,7 +34,9 @@ export class TileOverlayPage implements OnInit, OnDestroy {
   }
 
   async loadMap() {
-    this.map = await this.mapService.attachMap('map_canvas');
+    this.map = await this.mapService.attachMap('map_canvas', {
+      'mapType' : MapTypeId.NONE
+    });
 
     [
       "https://stamen-tiles.a.ssl.fastly.net/toner/{zoom}/{x}/{y}.png",
