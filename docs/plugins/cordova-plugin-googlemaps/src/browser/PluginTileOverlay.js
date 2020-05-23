@@ -1,4 +1,4 @@
-cordova.define("cordova-plugin-googlemaps.PluginTileOverlay", function(require, exports, module) { 
+cordova.define("cordova-plugin-googlemaps.PluginTileOverlay", function(require, exports, module) {
 var utils = require('cordova/utils'),
   BaseClass = require('cordova-plugin-googlemaps.BaseClass');
 
@@ -77,7 +77,13 @@ function TileOverlay(mapId, hashCode, options) {
 
     releaseTile: function(div) {
       var cacheId = div.getAttribute('cacheId');
-      delete tileCaches[cacheId];
+      var div = tileCaches[cacheId];
+      if (div) {
+        if (div.parentNode) {
+          div.parentNode.removeChild(div);
+        }
+        delete tileCaches[cacheId];
+      }
     },
 
     remove: function() {
