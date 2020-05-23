@@ -35,7 +35,7 @@ export class TileOverlayPage implements OnInit, OnDestroy {
 
   async loadMap() {
     this.map = await this.mapService.attachMap('map_canvas', {
-      'mapType' : MapTypeId.NONE
+      'mapType' : MapTypeId.NORMAL
     });
 
     [
@@ -44,12 +44,13 @@ export class TileOverlayPage implements OnInit, OnDestroy {
     ].forEach((layerUrl: string, idx: number) => {
 
       const layer: TileOverlay = this.map.addTileOverlaySync({
-        zIndex: idx,
-        getTile: (x: number, y: number, zoom: number) => {
+        'zIndex': idx,
+        'getTile': (x: number, y: number, zoom: number) => {
           return layerUrl.replace("{zoom}", zoom + "")
                     .replace("{x}", x + "")
                     .replace("{y}", y + "");
-        }
+        },
+        'opacity': 0.7
       });
       this.layers.push(layer);
     });
