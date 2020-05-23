@@ -45,21 +45,25 @@ export class TileOverlayPage implements OnInit, OnDestroy {
       }
     });
 
-    [
-      "https://stamen-tiles.a.ssl.fastly.net/toner/{zoom}/{x}/{y}.png",
-      "https://stamen-tiles.a.ssl.fastly.net/watercolor/{zoom}/{x}/{y}.jpg"
-    ].forEach((layerUrl: string, idx: number) => {
+    await (new Promise((resolve) => {
 
-      const layer: TileOverlay = this.map.addTileOverlaySync({
-        zIndex: idx,
-        getTile: (x: number, y: number, zoom: number) => {
-          return layerUrl.replace("{zoom}", zoom + "")
-                    .replace("{x}", x + "")
-                    .replace("{y}", y + "");
-        }
+      [
+        "https://stamen-tiles.a.ssl.fastly.net/toner/{zoom}/{x}/{y}.png",
+        "https://stamen-tiles.a.ssl.fastly.net/watercolor/{zoom}/{x}/{y}.jpg"
+      ].forEach((layerUrl: string, idx: number) => {
+
+        const layer: TileOverlay = this.map.addTileOverlaySync({
+          zIndex: idx,
+          getTile: (x: number, y: number, zoom: number) => {
+            return layerUrl.replace("{zoom}", zoom + "")
+                      .replace("{x}", x + "")
+                      .replace("{y}", y + "");
+          }
+        });
+        this.layers.push(layer);
       });
-      this.layers.push(layer);
-    });
+      resolve();
+    }));
 
   }
 
