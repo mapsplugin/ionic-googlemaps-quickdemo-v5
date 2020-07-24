@@ -29,7 +29,7 @@ Defined API keys are restricted. You can not use these keys in your app.
 # How to use?
 
 ```
-$> ionic cordova plugin add cordova-plugin-googlemaps
+$> ionic cordova plugin add github.com/mapsplugin/cordova-plugin-googlemaps#multiple_maps
 
-$> npm install @ionic-native/google-maps
+$> npm install @ionic-native/google-maps@5.27.0-beta-20200630
 ```
