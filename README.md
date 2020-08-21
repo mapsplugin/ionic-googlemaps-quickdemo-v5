@@ -20,7 +20,6 @@ Defined API keys are restricted. You can not use these keys in your app.
   ...
   <preference name="GOOGLE_MAPS_ANDROID_API_KEY" value="AIza..LWw" />
   <preference name="GOOGLE_MAPS_IOS_API_KEY" value="AIza..ONlc" />
-  <preference name="GOOGLE_MAPS_BROWSER_API_KEY" value="AIzaSy...oBaw" />
 </widget>
 ```
 
